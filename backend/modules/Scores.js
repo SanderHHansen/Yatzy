@@ -2,22 +2,25 @@
 
 class Scores {
     constructor(diceArray) {
+        // Collects raw integers from diceArray
         this.values = diceArray.map(dice => dice.value);
-        this.ones = null;
-        this.twos = null;
-        this.threes = null;
-        this.fours = null;
-        this.fives = null;
-        this.sixes = null;
-        this.onePair = null;
-        this.twoPairs = null;
-        this.threeOfAKind = null;
-        this.fourOfAKind = null;
-        this.fullHouse = null;
-        this.smallStraight = null;
-        this.largeStraight = null;
-        this.yatzy = null;
-        this.chance = null;
+
+        // Scores to be returned
+        this.ones = 0;
+        this.twos = 0;
+        this.threes = 0;
+        this.fours = 0;
+        this.fives = 0;
+        this.sixes = 0;
+        this.onePair = 0;
+        this.twoPairs = 0;
+        this.threeOfAKind = 0;
+        this.fourOfAKind = 0;
+        this.fullHouse = 0;
+        this.smallStraight = 0;
+        this.largeStraight = 0;
+        this.yatzy = 0;
+        this.chance = 0;
 
         // Runs methods for calculating values
         this.calculateUpper();
@@ -48,7 +51,7 @@ class Scores {
 
     calculateOnePair() {
         for(let i = 6; i > 0; i--) {
-            if (this.values.filter(element => element === i).length >= 2) {
+            if (this.values.filter(element => element === i).length >= 2) { // Checks if pair exists.
                 this.onePair = i*2;
                 break;
             }
@@ -56,31 +59,65 @@ class Scores {
     }
 
     calculateTwoPairs() {
-        let returnvalue = 0;
-        let count = 0
+        let amountOfPairs = 0; // Keep track of how many pairs have been counted.
+        let returnValue = 0;
+
+        for(let i = 6; i > 0; i--) {
+            if (this.values.filter(element => element === i).length >= 2) {
+                returnValue+= (i*2);
+                amountOfPairs+=1;
+
+                if (amountOfPairs === 2) { // Checks if two pairs have been found
+                    this.twoPairs = returnValue;
+                    break;
+                }
+            }
+        }
     }
     calculateThreeOfAKind() {
-        let returnvalue = 0;
-
+        for(let i = 6; i > 0; i--) {
+            if (this.values.filter(element => element === i).length >= 3) { // Checks if three of a kind exists.
+                this.threeOfAKind = i*3;
+                break;
+            }
+        }
     }
     calculateFourOfAKind() {
-        let returnvalue = 0;
-
+        for(let i = 6; i > 0; i--) {
+            if (this.values.filter(element => element === i).length >= 4) { // Checks if four of a kind exists.
+                this.fourOfAKind = i*4;
+                break;
+            }
+        }
     }
     calculateFullHouse() {
-        let returnvalue = 0;
+        let threeOfAKind = this.threeOfAKind/3; // Gets the number there exists 3 of.
+
+        if (threeOfAKind === 0) {
+            return; // Returns if there wasn't a case of 3 of a kind.
+        } 
+
+        for(let i = 6; i > 0; i--) {
+            if (this.values.filter(element => element === i).length >= 2) { // Checks if there is at least a pair.
+                if (i === threeOfAKind) { // Checks if number has already been accounted for.
+                    continue;
+                }
+                this.fullHouse = threeOfAKind*3+i*2
+                break;
+            }
+        }
     }
     calculateSmallStraight() {
-        let returnvalue = 0;
+
     }
     calculateLargeStraight() {
-        let returnvalue = 0;
+
     }
     calculateYatzy() {
-        let returnvalue = 0;
+
     }
     calculateChance() {
-        let returnvalue = 0;
+
     }
 }
 

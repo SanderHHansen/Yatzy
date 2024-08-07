@@ -9,11 +9,14 @@ for(let i = 0; i < 5; i++) {
     newDice.roll();
     diceArray1.push(newDice);
 }
-// If specific values are needed, overwrite this.
-const specificValues = [1, 1, 1, 1, 1];
-for(let i = 0; i < 5; i++) {
-    diceArray1[i].value=specificValues[i];
-    console.log(diceArray1);
+
+const shouldValuesBeRigged = false; // If specific values are needed, overwrite this.
+
+if (shouldValuesBeRigged) {
+    const specificValues = [2, 2, 5, 5, 5];
+    for(let i = 0; i < 5; i++) {
+        diceArray1[i].value=specificValues[i];
+    }
 }
 
 // Creating Scores
