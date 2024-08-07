@@ -13,7 +13,7 @@ for(let i = 0; i < 5; i++) {
 const shouldValuesBeRigged = false; // If specific values are needed, overwrite this.
 
 if (shouldValuesBeRigged) {
-    const specificValues = [2, 2, 5, 5, 5];
+    const specificValues = [3, 3, 3, 3, 3];
     for(let i = 0; i < 5; i++) {
         diceArray1[i].value=specificValues[i];
     }

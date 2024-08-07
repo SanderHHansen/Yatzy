@@ -49,75 +49,75 @@ class Scores {
         this.sixes = upper(6);
     }
 
-    calculateOnePair() {
-        for(let i = 6; i > 0; i--) {
-            if (this.values.filter(element => element === i).length >= 2) { // Checks if pair exists.
-                this.onePair = i*2;
-                break;
+    /* Functions that returns the highest values that occurs at least "frequency" amount of times, 
+    * multiplicated by "frequency" given.
+    * Ignores "valueToIgnore". If no values should be ignore, call function with (x, null).
+    */
+    frequencyFinder(frequency, valueToIgnore) {
+        for(let i = 6; i > 1; i--) {
+            // Checks if iteration should be skipped.
+            if(valueToIgnore != null && valueToIgnore === i) {
+                continue; 
+            }
+
+            // Checks if pair exists.
+            if (this.values.filter(element => element === i).length >= frequency) { 
+                return i;
             }
         }
+        return 0;
+    }
+
+    calculateOnePair() {
+        this.onePair = this.frequencyFinder(2, null)*2;
     }
 
     calculateTwoPairs() {
-        let amountOfPairs = 0; // Keep track of how many pairs have been counted.
-        let returnValue = 0;
+        let firstPair = this.onePair; // Collects first pair.
+        let secondPair = this.frequencyFinder(2, (firstPair/2))*2;
 
-        for(let i = 6; i > 0; i--) {
-            if (this.values.filter(element => element === i).length >= 2) {
-                returnValue+= (i*2);
-                amountOfPairs+=1;
-
-                if (amountOfPairs === 2) { // Checks if two pairs have been found
-                    this.twoPairs = returnValue;
-                    break;
-                }
-            }
+        if (firstPair > 0 && secondPair > 0) {
+            this.twoPairs = firstPair + secondPair;
         }
     }
+
     calculateThreeOfAKind() {
-        for(let i = 6; i > 0; i--) {
-            if (this.values.filter(element => element === i).length >= 3) { // Checks if three of a kind exists.
-                this.threeOfAKind = i*3;
-                break;
-            }
-        }
+        this.threeOfAKind = this.frequencyFinder(3, null)*3;
     }
+
     calculateFourOfAKind() {
-        for(let i = 6; i > 0; i--) {
-            if (this.values.filter(element => element === i).length >= 4) { // Checks if four of a kind exists.
-                this.fourOfAKind = i*4;
-                break;
-            }
-        }
+        this.fourOfAKind = this.frequencyFinder(4, null)*4;
     }
+
     calculateFullHouse() {
-        let threeOfAKind = this.threeOfAKind/3; // Gets the number there exists 3 of.
+        let trio = this.threeOfAKind; // Collects trio.
+        let double = this.frequencyFinder(2, (trio/3))*2;
 
-        if (threeOfAKind === 0) {
-            return; // Returns if there wasn't a case of 3 of a kind.
-        } 
-
-        for(let i = 6; i > 0; i--) {
-            if (this.values.filter(element => element === i).length >= 2) { // Checks if there is at least a pair.
-                if (i === threeOfAKind) { // Checks if number has already been accounted for.
-                    continue;
-                }
-                this.fullHouse = threeOfAKind*3+i*2
-                break;
-            }
+        if (trio > 0 && double > 0) {
+            this.fullHouse = trio + double;
         }
     }
-    calculateSmallStraight() {
 
+    calculateSmallStraight() {
+        
     }
+
     calculateLargeStraight() {
 
     }
+
     calculateYatzy() {
-
+        if (this.frequencyFinder(5, null) != 0) {
+            this.yatzy = 50;
+        }
     }
-    calculateChance() {
 
+    calculateChance() {
+        let returnValue = 0;
+        for (let i = 0; i < 5; i++) {
+            returnValue+= this.values[i];
+        }
+        this.chance = returnValue;
     }
 }
 
