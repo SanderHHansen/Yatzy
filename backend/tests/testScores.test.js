@@ -22,7 +22,8 @@ if (shouldValuesBeRigged) {
 // Creating Scores
 const testScore = new Scores(diceArray1);
 
+// For logging purposes
 test("Checks if Scores exist", () =>{
-    console.log(testScore);
-    console.log(testScore.returnScoresPossible());
+    // console.log(testScore);
+    // console.log(testScore.returnScoresPossible());
 })
