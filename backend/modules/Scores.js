@@ -16,8 +16,20 @@ class Scores {
         this.fullHouse = null;
         this.smallStraight = null;
         this.largeStraight = null;
-        this.yahtzee = null;
+        this.yatzy = null;
         this.chance = null;
+
+        // Runs methods for calculating values
+        this.calculateUpper();
+        this.calculateOnePair();
+        this.calculateTwoPairs();
+        this.calculateThreeOfAKind();
+        this.calculateFourOfAKind();
+        this.calculateFullHouse();
+        this.calculateSmallStraight();
+        this.calculateLargeStraight();
+        this.calculateYatzy();
+        this.calculateChance();
     }
 
     calculateUpper() {
@@ -32,6 +44,43 @@ class Scores {
         this.fours = upper(4);
         this.fives = upper(5);
         this.sixes = upper(6);
+    }
+
+    calculateOnePair() {
+        for(let i = 6; i > 0; i--) {
+            if (this.values.filter(element => element === i).length >= 2) {
+                this.onePair = i*2;
+                break;
+            }
+        }
+    }
+
+    calculateTwoPairs() {
+        let returnvalue = 0;
+        let count = 0
+    }
+    calculateThreeOfAKind() {
+        let returnvalue = 0;
+
+    }
+    calculateFourOfAKind() {
+        let returnvalue = 0;
+
+    }
+    calculateFullHouse() {
+        let returnvalue = 0;
+    }
+    calculateSmallStraight() {
+        let returnvalue = 0;
+    }
+    calculateLargeStraight() {
+        let returnvalue = 0;
+    }
+    calculateYatzy() {
+        let returnvalue = 0;
+    }
+    calculateChance() {
+        let returnvalue = 0;
     }
 }
 
