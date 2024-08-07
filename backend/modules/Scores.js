@@ -99,11 +99,15 @@ class Scores {
     }
 
     calculateSmallStraight() {
-        
+        if (this.frequencyFinder(2, null) === 0 && this.sixes === 0) {
+            this.smallStraight = 15;
+        }
     }
 
     calculateLargeStraight() {
-
+        if (this.frequencyFinder(2, null) === 0 && this.ones === 0) {
+            this.largeStraight = 20;
+        }
     }
 
     calculateYatzy() {
@@ -118,6 +122,26 @@ class Scores {
             returnValue+= this.values[i];
         }
         this.chance = returnValue;
+    }
+
+    returnScoresPossible() {
+        return {
+            ones: this.ones,
+            twos: this.twos,
+            threes: this.threes,
+            fours: this.fours,
+            fives: this.fives,
+            sixes: this.sixes,
+            onePair: this.onePair,
+            twoPairs: this.twoPair,
+            threeOfAKind: this.threeOfAKind,
+            fourOfAKind: this.fourOfAKind,
+            fullHouse: this.fullHouse,
+            smallStraight: this.smallStraight,
+            largeStraight: this.largeStraight,
+            yatzy: this.yatzy,
+            chance: this.chance
+        }
     }
 }
 

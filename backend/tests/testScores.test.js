@@ -10,10 +10,10 @@ for(let i = 0; i < 5; i++) {
     diceArray1.push(newDice);
 }
 
-const shouldValuesBeRigged = false; // If specific values are needed, overwrite this.
+const shouldValuesBeRigged = true; // If specific values are needed, overwrite this.
 
 if (shouldValuesBeRigged) {
-    const specificValues = [3, 3, 3, 3, 3];
+    const specificValues = [5, 6, 2, 4, 3];
     for(let i = 0; i < 5; i++) {
         diceArray1[i].value=specificValues[i];
     }
@@ -24,4 +24,5 @@ const testScore = new Scores(diceArray1);
 
 test("Checks if Scores exist", () =>{
     console.log(testScore);
+    console.log(testScore.returnScoresPossible());
 })
