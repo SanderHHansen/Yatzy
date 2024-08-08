@@ -6,6 +6,7 @@ class Scoreboard {
     this.fours = null;
     this.fives = null;
     this.sixes = null;
+    this.bonus = null;
     this.onePair = null;
     this.twoPairs = null;
     this.threeOfAKind = null;
@@ -25,6 +26,13 @@ class Scoreboard {
 
     this[toBeChanged] = newValue;
     return true;
+  }
+
+  // Calculates if bonus should be given. Updates value accordingly.
+  calculateBonus() {
+    if (this.ones+this.twos+this.threes+this.fours+this.fives.this.sixes >= 63) {
+      this.bonus = 35;
+    }
   }
 }
 

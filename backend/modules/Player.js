@@ -42,6 +42,13 @@ class Player {
         const score = new Scores(this.diceArray);
         return score.returnScoresPossible()
     }
+
+    // Returns scoreboard
+    getScoreboard() {
+        // Calculates bonus
+        this.scoreboard.calculateBonus();
+        return this.scoreboard;
+    }
     
     // Updates one value on scoreboard
     // Return "true" if successful, otherwise "false"

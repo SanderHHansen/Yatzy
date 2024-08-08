@@ -39,6 +39,11 @@ class Yatzy {
     return this.currentPlayer.getScores();
   }
 
+  // Retrieves scoreboard for a given player
+  getScoreboard(player) {
+    return player.getScoreboard();
+  } 
+
   /* Returns boolean based on if player trying to commit action
   * is currentPlayer or not.
   */
