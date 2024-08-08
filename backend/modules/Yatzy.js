@@ -4,7 +4,7 @@ class Yatzy {
   constructor(host) {
     this.host = host; // Person who created the lobby.
     this.playerArray = [host]; // Array with all the players.
-    this.currentPlayer = null; // The player whos turn it is
+    this.currentPlayer = host; // The player whos turn it is
     const rollCount = 0; // Keep track of number of throws current player has done
   }
 
@@ -25,12 +25,13 @@ class Yatzy {
     })
 
     // Updates current player
-    this.playerArray.forEach(player => {
+    for(let i = 0; i < this.playerArray.length; i++) {
+      let player = this.playerArray[i];
       if (player.roundsPlayed === lowestRoundsPlayed) {
         this.currentPlayer = player;
         return;
       }
-    })
+    }
   }
 
   // Retrieves possible scores for currentPlayer
@@ -54,13 +55,15 @@ class Yatzy {
     this.rollCount = 0;
 
     // Checks if game is finished (All player have 15 rounds played).
-    this.playerArray.forEach(player => {
+    for(let i = 0; i < this.playerArray.length; i++) {
+      let player = this.playerArray[i];
       if (player.roundsPlayed != 15) {
         this.changeCurrentPlayer();
         return;
       }
-    })
+    }
 
+    // All players had 15 round played. Game is over.
     this.endMatch();
   }
 
@@ -75,17 +78,19 @@ class Yatzy {
 
   // Starts a new turn for the current player
   rollDice(player) {
-    if (!isPlayerCurrentPlayer || rollCount === 3) {
+    if (!this.isPlayerCurrentPlayer(player) || this.rollCount === 3) {
+      console.log("Current player is currently: " + this.currentPlayer.name)
+      console.log("'Player' is: " + player.name)
       return;
     }
 
     player.rollDice();
-    rollCount++;
+    this.rollCount++;
   }
 
   // Flips value of "isSaved" given player and diceIndex.
   flipIsSaved(player, diceIndex) {
-    if (!isPlayerCurrentPlayer) {
+    if (!this.isPlayerCurrentPlayer(player)) {
       return;
     }
 
@@ -96,16 +101,17 @@ class Yatzy {
   * "section" is a string perfectly matching "onePair", "fullHouse" etc.
   */
   selectScore(player, section) {
-    if (!isPlayerCurrentPlayer) {
+    if (!this.isPlayerCurrentPlayer(player)) {
       return;
     }
 
     let points = 0;
     // Collects score from given section
-    possibleScores = this.getScores();
+    let possibleScores = this.getScores();
     points = possibleScores[section]
 
     if (player.updateScore(section, points)) { // Returns true only if score was changed
+      player.resetDice();
       this.finishRound(); 
     }
   }

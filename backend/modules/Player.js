@@ -15,6 +15,10 @@ class Player {
         }
     }
 
+    setName(name) {
+        this.name = name;
+    }
+
     rollDice() {
         this.diceArray.forEach((dice) => {
             if (!dice.isSaved) {
@@ -23,13 +27,19 @@ class Player {
         })
     }
 
+    resetDice() {
+        this.diceArray.forEach((dice) => {
+            dice.resetDice();
+        })  
+    }
+
     increaseRoundsPlayed() {
         this.roundsPlayed++;
     }
 
     // Returns object with all possible scores.
     getScores() {
-        const score = new Scores(diceArray);
+        const score = new Scores(this.diceArray);
         return score.returnScoresPossible()
     }
     
@@ -37,7 +47,7 @@ class Player {
     // Return "true" if successful, otherwise "false"
     updateScore(toBeChanged, newValue) {
         if (this.scoreboard.updateScore(toBeChanged, newValue)) {
-            this.increaseRoundsPlayed;
+            this.increaseRoundsPlayed();
             return true;
         }
         return false;
