@@ -17,14 +17,14 @@ class Scoreboard {
     this.chance = null;
   }
 
-  // Function to change one value. If value has been changed, returns 1. Otherwise, returns 0.
+  // Function to change one value. If value has been changed, returns true. Otherwise, returns false.
   updateScore(toBeChanged, newValue) {
-    if (this[toBeChanged] != null) { // Value not allowed to be changed again. Returns 0.
-      return 0;
+    if (this[toBeChanged] != null) { // Value not allowed to be changed again. Returns false.
+      return false;
     }
 
     this[toBeChanged] = newValue;
-    return 1;
+    return true;
   }
 }
 

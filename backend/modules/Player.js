@@ -1,10 +1,12 @@
 const Dice = require("./Dice.js");
 const Scoreboard = require("./Scoreboard.js");
+const Scores = require("./Scores.js");
 
 class Player {
     constructor() {
         this.name = null;
         this.diceArray = [];
+        this.roundsPlayed = 0;
         this.scoreboard = new Scoreboard();
 
         // Puts 5 dice in array
@@ -19,6 +21,26 @@ class Player {
                 dice.roll()
             }
         })
+    }
+
+    increaseRoundsPlayed() {
+        this.roundsPlayed++;
+    }
+
+    // Returns object with all possible scores.
+    getScores() {
+        const score = new Scores(diceArray);
+        return score.returnScoresPossible()
+    }
+    
+    // Updates one value on scoreboard
+    // Return "true" if successful, otherwise "false"
+    updateScore(toBeChanged, newValue) {
+        if (this.scoreboard.updateScore(toBeChanged, newValue)) {
+            this.increaseRoundsPlayed;
+            return true;
+        }
+        return false;
     }
 }
 
