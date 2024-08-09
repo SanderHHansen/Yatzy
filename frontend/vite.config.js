@@ -7,7 +7,16 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    // Inkluderer alle filer med .test.js, .test.jsx, .spec.js, .spec.jsx
+    port: 3001,  // Port for testing
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000', // Matches backend
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+
+    // Includes all files with .test.js, .test.jsx, .spec.js, .spec.jsx
     include: ['src/**/*.{test,spec}.{js,jsx,ts,tsx}', 'tests/**/*.{test,spec}.{js,jsx,ts,tsx}'],
     exclude: [...configDefaults.exclude, '**/node_modules/**', 'dist/**'],
   },
