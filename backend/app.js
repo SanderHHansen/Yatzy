@@ -3,6 +3,7 @@ const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
+const path = require("path");
 
 // Socket.IO dashboard
 const {instrument} = require("@socket.io/admin-ui");
@@ -13,6 +14,9 @@ const port = process.env.PORT || 3000;
 // Setup for middleware
 app.use(express.json());
 app.use(cors());
+
+// Serving static content from React-app
+app.use(express.static(path.join(__dirname, "../frontend", "src", "build")));
 
 // Creating HTTP-server for Socket.IO implementation
 const server = http.createServer(app);
