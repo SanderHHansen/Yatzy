@@ -1,22 +1,29 @@
 // Generel setup
 const express = require("express");
+const path = require("path");
 const http = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
-const path = require("path");
-
-// Socket.IO dashboard
-const {instrument} = require("@socket.io/admin-ui");
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Socket.IO dashboard
+const {instrument} = require("@socket.io/admin-ui");
 
 // Setup for middleware
 app.use(express.json());
 app.use(cors());
 
-// Serving static content from React-app
-app.use(express.static(path.join(__dirname, "../frontend", "src", "build")));
+// Serving static content from frontend
+const buildPath = path.join(__dirname, "../frontend/dist");
+app.use(express.static(buildPath));
+
+// Serving index.html for all unknown routes
+app.get('*', (req, res) => {
+  const filePath = path.join(buildPath, 'index.html');
+  res.sendFile(filePath);
+});
 
 // Creating HTTP-server for Socket.IO implementation
 const server = http.createServer(app);
@@ -40,8 +47,8 @@ io.on("disconnect", (socket) => {
   console.log("A user disconnected");
 })
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
 });
 
 // Starting server on port 3000
