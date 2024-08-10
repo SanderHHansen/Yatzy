@@ -1,9 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  // For rerouting to Game
+  const navigate = useNavigate();
+  const handleButtonClick = () => {
+    navigate("/game");
+  };
+
   return (
     <>
-      <button> Click here to go to next page </button>
+      <button onClick={handleButtonClick}>
+        {" "}
+        Click here to go to next page{" "}
+      </button>
     </>
   );
 }
