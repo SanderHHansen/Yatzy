@@ -1,15 +1,11 @@
 import React from "react"
-import Navbar from "./Navbar.jsx"
 
 function Home() {
-    return (
-        <>
-            <div className="header">
-                <Navbar />
-                <p>Hei! Du har kommet til home</p>
-            </div>
-        </>
-    )
+  return (
+    <>
+      <button> Click here to goqse to next page </button>
+    </>
+  )
 }
 
 export default Home;
