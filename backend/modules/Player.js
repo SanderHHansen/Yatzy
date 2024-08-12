@@ -1,10 +1,12 @@
 const Dice = require("./Dice.js");
 const Scoreboard = require("./Scoreboard.js");
 const Scores = require("./Scores.js");
+const { v4: uuidv4 } = require("uuid");
 
 class Player {
   constructor() {
     this.name = null;
+    this.playerId = uuidv4();
     this.diceArray = [];
     this.roundsPlayed = 0;
     this.scoreboard = new Scoreboard();

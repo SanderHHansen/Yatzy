@@ -2,8 +2,8 @@ const Player = require("./Player.js");
 const { v4: uuidv4 } = require("uuid");
 
 class Yatzy {
-  constructor(host, gameId = uuidv4()) {
-    this.gameId = gameId;
+  constructor(host) {
+    this.gameId = uuidv4();
     this.host = host; // Person who created the lobby.
     this.playerArray = [host]; // Array with all the players.
     this.currentPlayer = host; // The player whos turn it is
