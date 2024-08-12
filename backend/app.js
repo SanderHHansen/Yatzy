@@ -9,11 +9,14 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Socket.IO dashboard
-const { instrument } = require("@socket.io/admin-ui");
+const { instrument } = require("@socket.io/admin-ui"); //! Ikke i bruk.
 
 // Setup for middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors()); // ! Kan kanskje slettes senere?
+
+// TODO All current games. Should be changed to postgres-database.
+app.locals.games = {};
 
 // Serving static content from frontend
 const buildPath = path.join(__dirname, "../frontend/dist");
