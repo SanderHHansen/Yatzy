@@ -1,7 +1,9 @@
 const Player = require("./Player.js");
+const { v4: uuidv4 } = require("uuid");
 
 class Yatzy {
-  constructor(host) {
+  constructor(host, gameId = uuidv4()) {
+    this.gameId = gameId;
     this.host = host; // Person who created the lobby.
     this.playerArray = [host]; // Array with all the players.
     this.currentPlayer = host; // The player whos turn it is
@@ -9,23 +11,23 @@ class Yatzy {
   }
 
   addPlayerToGame(newPlayer) {
-    this.playerArray.push(newPlayer)
+    this.playerArray.push(newPlayer);
   }
 
-  /* Checks playercount of every player. Updates currentPlayer to the one that has the least rounds played, 
-  * and who is at the lowest index in players-array.
-  */
+  /* Checks playercount of every player. Updates currentPlayer to the one that has the least rounds played,
+   * and who is at the lowest index in players-array.
+   */
   changeCurrentPlayer() {
     // Finds lowest rounds played
     let lowestRoundsPlayed = Infinity;
-    this.playerArray.forEach(player => {
+    this.playerArray.forEach((player) => {
       if (player.roundsPlayed < lowestRoundsPlayed) {
         lowestRoundsPlayed = player.roundsPlayed;
       }
-    })
+    });
 
     // Updates current player
-    for(let i = 0; i < this.playerArray.length; i++) {
+    for (let i = 0; i < this.playerArray.length; i++) {
       let player = this.playerArray[i];
       if (player.roundsPlayed === lowestRoundsPlayed) {
         this.currentPlayer = player;
@@ -42,15 +44,15 @@ class Yatzy {
   // Retrieves scoreboard for a given player
   getScoreboard(player) {
     return player.getScoreboard();
-  } 
+  }
 
   /* Returns boolean based on if player trying to commit action
-  * is currentPlayer or not.
-  */
+   * is currentPlayer or not.
+   */
   isPlayerCurrentPlayer(player) {
     if (player === this.currentPlayer) {
       return true;
-    } 
+    }
     return false;
   }
 
@@ -60,7 +62,7 @@ class Yatzy {
     this.rollCount = 0;
 
     // Checks if game is finished (All player have 15 rounds played).
-    for(let i = 0; i < this.playerArray.length; i++) {
+    for (let i = 0; i < this.playerArray.length; i++) {
       let player = this.playerArray[i];
       if (player.roundsPlayed != 15) {
         this.changeCurrentPlayer();
@@ -77,15 +79,15 @@ class Yatzy {
     console.log("Congratulations to the winner!");
   }
 
-  /* 
-  * -- Commands players can do --
-  */
+  /*
+   * -- Commands players can do --
+   */
 
   // Starts a new turn for the current player
   rollDice(player) {
     if (!this.isPlayerCurrentPlayer(player) || this.rollCount === 3) {
-      console.log("Current player is currently: " + this.currentPlayer.name)
-      console.log("'Player' is: " + player.name)
+      console.log("Current player is currently: " + this.currentPlayer.name);
+      console.log("'Player' is: " + player.name);
       return;
     }
 
@@ -99,12 +101,12 @@ class Yatzy {
       return;
     }
 
-    player.diceArray[diceIndex].flipIsSaved
+    player.diceArray[diceIndex].flipIsSaved;
   }
 
   /* Sets score for a given player and given section.
-  * "section" is a string perfectly matching "onePair", "fullHouse" etc.
-  */
+   * "section" is a string perfectly matching "onePair", "fullHouse" etc.
+   */
   selectScore(player, section) {
     if (!this.isPlayerCurrentPlayer(player)) {
       return;
@@ -113,11 +115,12 @@ class Yatzy {
     let points = 0;
     // Collects score from given section
     let possibleScores = this.getScores();
-    points = possibleScores[section]
+    points = possibleScores[section];
 
-    if (player.updateScore(section, points)) { // Returns true only if score was changed
+    if (player.updateScore(section, points)) {
+      // Returns true only if score was changed
       player.resetDice();
-      this.finishRound(); 
+      this.finishRound();
     }
   }
 }
