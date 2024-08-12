@@ -1,6 +1,6 @@
 // Handling Socket.IO connections
 
-module.exports = (io, app) => {
+const handleSockets = (io, app) => {
   io.on("connection", (socket) => {
     console.log("A user connected");
   });
@@ -9,3 +9,5 @@ module.exports = (io, app) => {
     console.log("A user disconnected");
   });
 };
+
+module.exports = handleSockets;
