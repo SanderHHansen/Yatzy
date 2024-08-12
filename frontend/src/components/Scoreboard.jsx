@@ -7,13 +7,13 @@ function Scoreboard() {
       <p>"Har importert tabellen"</p>
       <table>
         <thead>
-          <th> Poeng </th>
-          <th> Player 1 </th>
+          <tr>
+            <th> Poeng </th>
+          </tr>
         </thead>
         <tbody>
           <tr>
             <td> Ones </td>
-            <td> 5 </td>
           </tr>
           <tr>
             <td> Twos </td>
