@@ -1,13 +1,26 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function Scoreboard() {
   // State for players
-  const [players, setPlayers] = useState();
+  const [players, setPlayers] = useState([]);
 
   const addPlayer = (playerToBeAdded) => {
     setPlayers([...players, playerToBeAdded]);
   };
+
+  // ! For testing. Importerer dummy.
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/api/dummy-player")
+      .then((response) => {
+        addPlayer(response.data);
+      })
+      .catch((error) => console.error("Error fetching dummy player: ", error));
+  }, []);
+
+  // ! Slutt testing.
 
   return (
     <div>
@@ -16,11 +29,17 @@ function Scoreboard() {
         <thead>
           <tr>
             <th> Scores </th> {/*// TODO Has to be deleted later. */}
+            {players.map((player, index) => (
+              <th key={index}> {player.name} </th>
+            ))}
           </tr>
         </thead>
         <tbody>
           <tr>
             <td> Ones </td>
+            {players.map((player, index) => (
+              <td key={index}> {player.scoreboard.ones} </td>
+            ))}
           </tr>
           <tr>
             <td> Twos </td>

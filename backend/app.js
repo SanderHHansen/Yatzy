@@ -19,11 +19,12 @@ app.use(cors());
 const buildPath = path.join(__dirname, "../frontend/dist");
 app.use(express.static(buildPath));
 
-// ! Only for resting. Returns dummy-player
+// ! Only for testing. Returns dummy-player
 const Player = require("./modules/Player");
 
 app.get("/api/dummy-player", (req, res) => {
-  const player = new Player("dummyId", "Dummy Player");
+  const player = new Player();
+  player.setName("Cake");
   player.updateScore("ones", 5);
   player.updateScore("twos", 10);
   player.updateScore("threes", 15);
