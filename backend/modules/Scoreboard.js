@@ -7,6 +7,7 @@ class Scoreboard {
     this.fives = null;
     this.sixes = null;
     this.bonus = null;
+    this.upperSum = null;
     this.onePair = null;
     this.twoPairs = null;
     this.threeOfAKind = null;
@@ -20,7 +21,8 @@ class Scoreboard {
 
   // Function to change one value. If value has been changed, returns true. Otherwise, returns false.
   updateScore(toBeChanged, newValue) {
-    if (this[toBeChanged] != null) { // Value not allowed to be changed again. Returns false.
+    if (this[toBeChanged] != null) {
+      // Value not allowed to be changed again. Returns false.
       return false;
     }
 
@@ -28,9 +30,17 @@ class Scoreboard {
     return true;
   }
 
-  // Calculates if bonus should be given. Updates value accordingly.
+  // Calculates sum of upper values. Updates value accordingly.
   calculateBonus() {
-    if (this.ones+this.twos+this.threes+this.fours+this.fives.this.sixes >= 63) {
+    this.upperSum =
+      this.ones +
+      this.twos +
+      this.threes +
+      this.fours +
+      this.fives +
+      this.sixes;
+
+    if (this.upperSum >= 63) {
       this.bonus = 35;
     }
   }
