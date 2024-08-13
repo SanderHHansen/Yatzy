@@ -126,6 +126,13 @@ class Yatzy {
     }
   }
 
+  // Updates all scoreboards for all players without changing anything.
+  updateAllScoreboards() {
+    this.playerArray.forEach((player) => {
+      player.updateScoreboardNoChanges();
+    });
+  }
+
   // Sends updated game data to socket for this game.
   updateGameData() {
     sendGameData(this.gameId, this);

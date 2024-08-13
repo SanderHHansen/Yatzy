@@ -49,7 +49,14 @@ class Player {
   getScoreboard() {
     // Calculates bonus
     this.scoreboard.calculateBonus();
+    this.scoreboard.calculateTotalSum();
     return this.scoreboard;
+  }
+
+  // Updates scoreboard without changing or returning anything
+  updateScoreboardNoChanges() {
+    this.scoreboard.calculateBonus();
+    this.scoreboard.calculateTotalSum();
   }
 
   // Updates one value on scoreboard

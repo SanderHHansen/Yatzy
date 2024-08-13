@@ -166,8 +166,8 @@ function Scoreboard() {
           <tr>
             <td> Sum: </td>
             {game &&
-              game.playerArray.map(({ scoreboard: { twos } }, index) => (
-                <td key={index}>{twos || ""}</td>
+              game.playerArray.map(({ scoreboard: { totalSum } }, index) => (
+                <td key={index}>{totalSum || ""}</td>
               ))}
           </tr>
         </tbody>

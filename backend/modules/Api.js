@@ -23,6 +23,7 @@ router.get("/dummy-game", (req, res) => {
   player2.updateScore("ones", 10);
   player2.updateScore("twos", 20);
   player2.updateScore("threes", 30);
+  game.updateAllScoreboards();
 
   res.json(game);
 });

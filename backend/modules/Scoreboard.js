@@ -50,7 +50,7 @@ class Scoreboard {
   calculateTotalSum() {
     this.totalSum = 0;
     for (const key of Object.keys(this)) {
-      if (key != "totalSum") {
+      if (key != "totalSum" && key != "upperSum") {
         this.totalSum += this[key] || 0;
       }
     }
