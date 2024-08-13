@@ -5,6 +5,7 @@ const http = require("http");
 const apiRoutes = require("./modules/Api.js");
 const frontendRoutes = require("./modules/Routes.js");
 const cors = require("cors");
+const { handleSockets, sendGameData } = require("./modules/Sockets.js");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -26,6 +27,7 @@ app.locals.games = {};
 // Starting server on specified port
 server.listen(port, () => {
   console.log(`Backend server running on port: ${port}`);
+  handleSockets(server);
 });
 
 module.exports = { server, app };

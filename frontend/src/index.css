@@ -11,7 +11,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --navbar-height: 100px;
+  --navbar-height: 90px;
 }
 
 a {

@@ -3,23 +3,47 @@ import axios from "axios";
 import "./Scoreboard.css";
 
 function Scoreboard() {
-  // State for players
-  const [players, setPlayers] = useState([]);
+  // State for game
+  const [game, setGame] = useState(null);
 
-  const addPlayer = (playerToBeAdded) => {
-    setPlayers([...players, playerToBeAdded]);
-  };
+  // const [players, setPlayers] = useState([]);
+
+  // const addPlayer = (playerToBeAdded) => {
+  //   setPlayers([...players, playerToBeAdded]);
+  // };
 
   // ! For testing. Importerer dummy.
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/dummy-player")
+      .get("http://localhost:3000/api/dummy-game")
       .then((response) => {
-        addPlayer(response.data);
+        setGame(response);
       })
-      .catch((error) => console.error("Error fetching dummy player: ", error));
+      .catch((error) => {
+        console.error("Couldn't fetch file", error);
+      });
   }, []);
 
+  // const fetchDummyPlayer1 = async () => {
+  //   axios.get("http://localhost:3000/api/dummy-player").then((response) => {
+  //     addPlayer(response.data);
+  //   });
+  // };
+
+  // const fetchDummyPlayer2 = async () => {
+  //   axios.get("http://localhost:3000/api/dummy-player2").then((response) => {
+  //     addPlayer(response.data);
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   const fetchAll = async () => {
+  //     await fetchDummyPlayer1();
+  //     await fetchDummyPlayer2;
+  //   };
+
+  //   fetchAll();
+  // }, []);
   // ! Slutt testing.
 
   return (
@@ -27,18 +51,19 @@ function Scoreboard() {
       <table>
         <thead>
           <tr>
-            <th> Scores </th> {/*// TODO Has to be deleted later. */}
-            {players.map((player, index) => (
-              <th key={index}> {player.name} </th>
-            ))}
+            {game &&
+              game.players.map((player, index) => (
+                <th key={index}> {player.name} </th>
+              ))}
           </tr>
         </thead>
         <tbody>
           <tr>
             <td> Ones </td>
-            {players.map((player, index) => (
-              <td key={index}> {player.scoreboard.ones} </td>
-            ))}
+            {game &&
+              game.players.map((player, index) => (
+                <td key={index}> {player.scoreboard.ones} </td>
+              ))}
           </tr>
           <tr>
             <td> Twos </td>

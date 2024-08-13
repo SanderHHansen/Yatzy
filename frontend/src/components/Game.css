@@ -6,11 +6,12 @@
   width: 100%;
   height: 100%;
   margin: 0;
+  margin-bottom: 150px;
   padding: 0;
 }
 
 .left-item {
-  margin-right: auto;
+  margin-right: 250px;
 }
 
 .die {

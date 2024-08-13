@@ -1,11 +1,9 @@
-// Handling Socket.IO connections
-const { server, app } = require("../app.js");
 const { Server } = require("socket.io");
 
-// Socket.IO setup and integration
-const io = new Server(server);
+let io; // Oppretter en referanse for 'io' som vil bli satt senere
 
-const handleSockets = (io, app) => {
+function handleSockets(server) {
+  io = new Server(server); // io instansen opprettes med server objektet
   io.on("connection", (socket) => {
     console.log("A user connected");
 
@@ -13,13 +11,15 @@ const handleSockets = (io, app) => {
       console.log("A user disconnected");
     });
   });
-};
-
-function sendGameData(gameId, data) {
-  io.to(gameId).emit("gameUpdate", data);
 }
 
-// Initializing sockets
-handleSockets(io, app);
+function sendGameData(gameId, data) {
+  if (io) {
+    // Sjekker at 'io' er satt før du prøver å bruke det
+    io.to(gameId).emit("gameUpdate", data);
+  } else {
+    console.error("Socket.io is not initialized.");
+  }
+}
 
-module.exports = { io, sendGameData };
+module.exports = { handleSockets, sendGameData };

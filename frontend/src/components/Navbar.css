@@ -15,7 +15,7 @@
 }
 
 .logo {
-  max-height: 70%;
+  max-height: 60%;
 }
 
 button {
@@ -23,7 +23,7 @@ button {
 }
 
 .title {
-  font-size: 40px;
+  font-size: 30px;
   color: rgb(249, 165, 20);
   margin-right: 150px;
   text-shadow:
