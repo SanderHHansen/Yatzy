@@ -1,4 +1,9 @@
 // Handling Socket.IO connections
+const { server, app } = require("../app.js");
+const { Server } = require("socket.io");
+
+// Socket.IO setup and integration
+const io = new Server(server);
 
 const handleSockets = (io, app) => {
   io.on("connection", (socket) => {
@@ -10,4 +15,7 @@ const handleSockets = (io, app) => {
   });
 };
 
-module.exports = handleSockets;
+// Initializing sockets
+handleSockets(io, app);
+
+module.exports = { io };
