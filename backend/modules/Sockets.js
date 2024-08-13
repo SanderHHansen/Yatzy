@@ -8,14 +8,18 @@ const io = new Server(server);
 const handleSockets = (io, app) => {
   io.on("connection", (socket) => {
     console.log("A user connected");
-  });
 
-  io.on("disconnect", (socket) => {
-    console.log("A user disconnected");
+    socket.on("disconnect", () => {
+      console.log("A user disconnected");
+    });
   });
 };
+
+function sendGameData(gameId, data) {
+  io.to(gameId).emit("gameUpdate", data);
+}
 
 // Initializing sockets
 handleSockets(io, app);
 
-module.exports = { io };
+module.exports = { io, sendGameData };

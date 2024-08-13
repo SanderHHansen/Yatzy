@@ -1,5 +1,6 @@
 const Player = require("./Player.js");
 const { v4: uuidv4 } = require("uuid");
+const { sendGameData } = require("./Sockets.js");
 
 class Yatzy {
   constructor(host) {
@@ -120,8 +121,14 @@ class Yatzy {
     if (player.updateScore(section, points)) {
       // Returns true only if score was changed
       player.resetDice();
+      this.updateGameData(); // Oppdaterer gamedata
       this.finishRound();
     }
+  }
+
+  // Sends updated game data to socket for this game.
+  updateGameData() {
+    sendGameData(this.gameId, this);
   }
 }
 
