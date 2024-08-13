@@ -6,10 +6,9 @@ const Player = require("./Player");
 const Yatzy = require("./Yatzy");
 
 router.get("/dummy-game", (req, res) => {
-  const game = new Yatzy();
   const player1 = new Player();
+  const game = new Yatzy(player1);
   const player2 = new Player();
-  game.addPlayerToGame(player1);
   game.addPlayerToGame(player2);
 
   // Manually sets gameId

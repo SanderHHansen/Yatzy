@@ -17,33 +17,12 @@ function Scoreboard() {
     axios
       .get("http://localhost:3000/api/dummy-game")
       .then((response) => {
-        setGame(response);
+        setGame(response.data);
       })
       .catch((error) => {
         console.error("Couldn't fetch file", error);
       });
   }, []);
-
-  // const fetchDummyPlayer1 = async () => {
-  //   axios.get("http://localhost:3000/api/dummy-player").then((response) => {
-  //     addPlayer(response.data);
-  //   });
-  // };
-
-  // const fetchDummyPlayer2 = async () => {
-  //   axios.get("http://localhost:3000/api/dummy-player2").then((response) => {
-  //     addPlayer(response.data);
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   const fetchAll = async () => {
-  //     await fetchDummyPlayer1();
-  //     await fetchDummyPlayer2;
-  //   };
-
-  //   fetchAll();
-  // }, []);
   // ! Slutt testing.
 
   return (
@@ -51,8 +30,9 @@ function Scoreboard() {
       <table>
         <thead>
           <tr>
+            <th></th> {/* Leave empty */}
             {game &&
-              game.players.map((player, index) => (
+              game.playerArray.map((player, index) => (
                 <th key={index}> {player.name} </th>
               ))}
           </tr>
@@ -61,7 +41,7 @@ function Scoreboard() {
           <tr>
             <td> Ones </td>
             {game &&
-              game.players.map((player, index) => (
+              game.playerArray.map((player, index) => (
                 <td key={index}> {player.scoreboard.ones} </td>
               ))}
           </tr>
