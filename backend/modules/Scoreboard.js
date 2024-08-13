@@ -12,11 +12,12 @@ class Scoreboard {
     this.twoPairs = null;
     this.threeOfAKind = null;
     this.fourOfAKind = null;
-    this.fullHouse = null;
     this.smallStraight = null;
     this.largeStraight = null;
-    this.yatzy = null;
+    this.fullHouse = null;
     this.chance = null;
+    this.yatzy = null;
+    this.totalSum = null;
   }
 
   // Function to change one value. If value has been changed, returns true. Otherwise, returns false.
@@ -42,6 +43,16 @@ class Scoreboard {
 
     if (this.upperSum >= 63) {
       this.bonus = 35;
+    }
+  }
+
+  // Calculate total sum of all. Updates value accordingly
+  calculateTotalSum() {
+    this.totalSum = 0;
+    for (const key of Object.keys(this)) {
+      if (key != "totalSum") {
+        this.totalSum += this[key] || 0;
+      }
     }
   }
 }
