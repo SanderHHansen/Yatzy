@@ -1,6 +1,6 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "./Scoreboard.css";
 
 function Scoreboard() {
   // State for players
@@ -24,7 +24,6 @@ function Scoreboard() {
 
   return (
     <div>
-      <p>"Har importert tabellen"</p>
       <table>
         <thead>
           <tr>
