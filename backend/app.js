@@ -4,6 +4,7 @@ const path = require("path");
 const http = require("http");
 const apiRoutes = require("./modules/Api.js");
 const frontendRoutes = require("./modules/Routes.js");
+const cors = require("cors");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -13,6 +14,7 @@ const server = http.createServer(app);
 
 // Middleware setup
 app.use(express.json());
+app.use(cors());
 
 // Routing setup
 app.use("/api", apiRoutes); // Reroutes API-calls to own file
