@@ -1,5 +1,4 @@
 import Scoreboard from "./Scoreboard.jsx";
-import DiceSection from "./DiceSection.jsx";
 import PlayArea from "./PlayArea.jsx";
 import "./Game.css";
 
@@ -12,7 +11,6 @@ function Game() {
         </div>
         <div className="right-item">
           <PlayArea />
-          <DiceSection />
         </div>
         {/* <img src="https://images.creativefabrica.com/products/thumbnails/2023/12/14/gpxxeDvpx/2ZXrGUhczWQUhN8IturjytpPdYV.png" /> */}
       </div>

@@ -3,12 +3,12 @@ import "./Game.css";
 
 function DiceSection() {
   return (
-    <div className="dice">
-      <img src={dieImage} className="die" />
-      <img src={dieImage} className="die" />
-      <img src={dieImage} className="die" />
-      <img src={dieImage} className="die" />
-      <img src={dieImage} className="die" />
+    <div className="section">
+      <img src={dieImage} className="diceBottom" />
+      <img src={dieImage} className="diceBottom" />
+      <img src={dieImage} className="diceBottom" />
+      <img src={dieImage} className="diceBottom" />
+      <img src={dieImage} className="diceBottom" />
     </div>
   );
 }

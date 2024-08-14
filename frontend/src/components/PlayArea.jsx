@@ -7,7 +7,7 @@ function PlayArea() {
         <div className="board"></div>
         <div className="boardBottom">
           <p className="keepText"> Dice to keep </p>
-          <div className="dices">
+          <div>
             <DiceSection />
           </div>
         </div>
