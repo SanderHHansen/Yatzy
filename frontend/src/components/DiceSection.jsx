@@ -3,7 +3,7 @@ import "./Game.css";
 
 function DiceSection() {
   return (
-    <div className="section">
+    <div className="diceBottomSection">
       <img src={dieImage} className="diceBottom" />
       <img src={dieImage} className="diceBottom" />
       <img src={dieImage} className="diceBottom" />

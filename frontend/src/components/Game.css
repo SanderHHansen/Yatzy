@@ -19,11 +19,11 @@ body,
 }
 
 .left-item {
-  flex: 0 0 50%;
+  flex: 0 0 40%;
 }
 
 .right-item {
-  flex: 0 0 50%;
+  flex: 0 0 60%;
   margin-left: 10px;
 }
 
@@ -57,16 +57,9 @@ body,
 
 .boardBottom {
   position: absolute;
-  /* background-color: #525252; 
-  background-color: rgba(
-    61,
-    61,
-    61,
-    0.5
-  );  Halvtransparent for å vise basen */
   background: linear-gradient(
     to bottom,
-    rgba(40, 40, 40, 0.8) 0%,
+    rgba(0, 0, 0, 0.8) 0%,
     rgba(0, 0, 0, 0.3) 100%
   );
   height: 35%;
@@ -90,20 +83,21 @@ body,
 /* Bottom dice Styling */
 /* ################### */
 
-.section {
+.diceBottomSection {
   display: flex;
   align-items: center;
   justify-content: center;
   left: 25%;
-  gap: 25px;
-  margin-top: 5%;
+  gap: 2vw;
+  margin-top: 3%;
 }
 
 .diceBottom {
-  max-height: 60px;
+  max-height: 4vw;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5));
 }
 
 /* ############################### */
@@ -172,3 +166,63 @@ table td {
 table tr:nth-child(even) {
   background-color: #3c3c3c;
 }
+
+.rainbow {
+  animation: rainbow 10s infinite; /* Animation over X seconds, infinite duration */
+}
+
+@keyframes rainbow {
+  0% {
+    color: #ff7b7b;
+  }
+  14% {
+    color: #ffb973;
+  }
+  28% {
+    color: #ffff70;
+  }
+  42% {
+    color: #72ff72;
+  }
+  57% {
+    color: #7272ff;
+  }
+  71% {
+    color: #c97dff;
+  }
+  85% {
+    color: #c57eff;
+  }
+  100% {
+    color: #ff7676;
+  }
+}
+
+/*
+@keyframes rainbow {
+  0% {
+    color: #ff0000;
+  }
+  14% {
+    color: #ff7f00;
+  }
+  28% {
+    color: #ffff00;
+  }
+  42% {
+    color: #00ff00;
+  }
+  57% {
+    color: #0000ff;
+  }
+  71% {
+    color: #4b0082;
+  }
+  85% {
+    color: #8b00ff;
+  }
+  100% {
+    color: #ff0000;
+  }
+}
+  */

@@ -189,7 +189,10 @@ function Scoreboard() {
             <td className="col1"> Yatzy </td>
             {game &&
               game.playerArray.map(({ scoreboard: { yatzy } }, index) => (
-                <td key={index} className="scoreData">
+                <td
+                  key={index}
+                  className={`scoreData ${yatzy ? "rainbow" : ""}`}
+                >
                   {yatzy || ""}
                 </td>
               ))}
