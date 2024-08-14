@@ -21,23 +21,47 @@
 img {
   max-height: 200px;
 }
-
+.board,
+table {
+  height: 80%;
+}
 .board {
   background-color: aqua;
-  height: 607px;
-  width: 500px;
+  display: flex;
+  height: 50%;
+  min-height: 50%;
+  width: 50%;
+  min-width: 50%;
   border-radius: 15px;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Code that styles the scoreboard */
 
+/* First column*/
+td.col1 {
+  padding-left: 10px; /* Length from left wall to text */
+}
+
 table {
-  width: 120%;
+  width: 130%;
   height: 80%;
   color: rgb(255, 255, 255);
   border-collapse: collapse;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  table-layout: auto;
+}
+
+th.names,
+td.names {
+  white-space: nowrap; /* Sikrer at teksten ikke brytes */
+  overflow: hidden; /* Skjuler overflødig innhold */
+  text-overflow: ellipsis; /* Viser ellipsis (tre prikker) ved overflod */
+}
+
+.names {
+  width: auto;
+  color: gold;
 }
 
 .specialCell td {
@@ -61,8 +85,4 @@ table td {
   border: 2px solid #000000;
   padding: 3px;
   text-align: left;
-}
-
-table tr:nth-child(even) {
-  background-color: #3c3c3c;
 }

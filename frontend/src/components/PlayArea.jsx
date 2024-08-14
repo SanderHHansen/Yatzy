@@ -1,7 +1,7 @@
 function PlayArea() {
   return (
     <>
-      <div className="board"></div>
+      <div className="board"> test </div>
     </>
   );
 }

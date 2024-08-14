@@ -35,8 +35,65 @@ function Scoreboard() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="col1"> Ones </td>
+          {/* Adding upper values */}
+          {["Ones", "Twos", "Threes", "Fours", "Fives", "Sixes"].map(
+            (scoreType) => (
+              <tr key={scoreType}>
+                <td className="col1">{scoreType}</td>
+                {game &&
+                  game.playerArray.map((player, index) => (
+                    <td key={index} className="scoreData">
+                      {player.scoreboard[scoreType] || ""}
+                    </td>
+                  ))}
+              </tr>
+            ),
+          )}
+          {/* Adding upper sum and bonus */}
+          {["Sum (Upper)", "Bonus"].map((scoreType) => (
+            <tr key={scoreType} className="specialCell">
+              <td className="col1">{scoreType}</td>
+              {game &&
+                game.playerArray.map((player, index) => (
+                  <td key={index} className="scoreData">
+                    {player.scoreboard[scoreType] || ""}
+                  </td>
+                ))}
+            </tr>
+          ))}
+          {[
+            "One pair",
+            "Two pairs",
+            "Three of a kind",
+            "Four of a kind",
+            "Small straight",
+            "Large straigth",
+            "Full house",
+            "Chance",
+            "Yatzy",
+          ].map((scoreType) => (
+            <tr key={scoreType}>
+              <td className="col1">{scoreType}</td>
+              {game &&
+                game.playerArray.map((player, index) => (
+                  <td key={index} className="scoreData">
+                    {player.scoreboard[scoreType] || ""}
+                  </td>
+                ))}
+            </tr>
+          ))}
+          <tr className="specialCell">
+            <td> Score: </td>
+            {game &&
+              game.playerArray.map(({ scoreboard: { totalSum } }, index) => (
+                <td key={index} className="scoreData">
+                  {totalSum || ""}
+                </td>
+              ))}
+          </tr>
+
+          {/* <tr>
+            <td> Ones </td>
             {game &&
               game.playerArray.map(({ scoreboard: { ones } }, index) => (
                 <td key={index} className="scoreData">
@@ -45,7 +102,7 @@ function Scoreboard() {
               ))}
           </tr>
           <tr>
-            <td className="col1"> Twos </td>
+            <td> Twos </td>
             {game &&
               game.playerArray.map(({ scoreboard: { twos } }, index) => (
                 <td key={index} className="scoreData">
@@ -54,7 +111,7 @@ function Scoreboard() {
               ))}
           </tr>
           <tr>
-            <td className="col1"> Threes </td>
+            <td> Threes </td>
             {game &&
               game.playerArray.map(({ scoreboard: { threes } }, index) => (
                 <td key={index} className="scoreData">
@@ -63,7 +120,7 @@ function Scoreboard() {
               ))}
           </tr>
           <tr>
-            <td className="col1"> Fours </td>
+            <td> Fours </td>
             {game &&
               game.playerArray.map(({ scoreboard: { fours } }, index) => (
                 <td key={index} className="scoreData">
@@ -72,7 +129,7 @@ function Scoreboard() {
               ))}
           </tr>
           <tr>
-            <td className="col1"> Fives </td>
+            <td> Fives </td>
             {game &&
               game.playerArray.map(({ scoreboard: { fives } }, index) => (
                 <td key={index} className="scoreData">
@@ -81,16 +138,16 @@ function Scoreboard() {
               ))}
           </tr>
           <tr>
-            <td className="col1"> Sixes </td>
+            <td> Sixes </td>
             {game &&
               game.playerArray.map(({ scoreboard: { sixes } }, index) => (
                 <td key={index} className="scoreData">
                   {sixes || ""}
                 </td>
               ))}
-          </tr>
-          <tr className="specialCell">
-            <td className="col1"> Sum (Upper): </td>
+          </tr> */}
+          {/* <tr className="specialCell">
+            <td> Sum (Upper): </td>
             {game &&
               game.playerArray.map(({ scoreboard: { upperSum } }, index) => (
                 <td key={index} className="scoreData">
@@ -99,16 +156,16 @@ function Scoreboard() {
               ))}
           </tr>
           <tr className="specialCell">
-            <td className="col1"> Bonus </td>
+            <td> Bonus </td>
             {game &&
               game.playerArray.map(({ scoreboard: { bonus } }, index) => (
                 <td key={index} className="scoreData">
                   {bonus || ""}
                 </td>
               ))}
-          </tr>
-          <tr>
-            <td className="col1"> One pair </td>
+          </tr> */}
+          {/* <tr>
+            <td> One pair </td>
             {game &&
               game.playerArray.map(({ scoreboard: { onePair } }, index) => (
                 <td key={index} className="scoreData">
@@ -117,7 +174,7 @@ function Scoreboard() {
               ))}
           </tr>
           <tr>
-            <td className="col1"> Two pairs </td>
+            <td> Two pairs </td>
             {game &&
               game.playerArray.map(({ scoreboard: { twoPair } }, index) => (
                 <td key={index} className="scoreData">
@@ -126,7 +183,7 @@ function Scoreboard() {
               ))}
           </tr>
           <tr>
-            <td className="col1"> Three of a kind </td>
+            <td> Three of a kind </td>
             {game &&
               game.playerArray.map(
                 ({ scoreboard: { threeOfAKind } }, index) => (
@@ -137,7 +194,7 @@ function Scoreboard() {
               )}
           </tr>
           <tr>
-            <td className="col1"> Four of a kind </td>
+            <td> Four of a kind </td>
             {game &&
               game.playerArray.map(({ scoreboard: { fourOfAKind } }, index) => (
                 <td key={index} className="scoreData">
@@ -146,7 +203,7 @@ function Scoreboard() {
               ))}
           </tr>
           <tr>
-            <td className="col1"> Small straight </td>
+            <td> Small straight </td>
             {game &&
               game.playerArray.map(
                 ({ scoreboard: { smallStraight } }, index) => (
@@ -157,7 +214,7 @@ function Scoreboard() {
               )}
           </tr>
           <tr>
-            <td className="col1"> Large straight </td>
+            <td> Large straight </td>
             {game &&
               game.playerArray.map(
                 ({ scoreboard: { largeStraight } }, index) => (
@@ -168,7 +225,7 @@ function Scoreboard() {
               )}
           </tr>
           <tr>
-            <td className="col1"> Full house </td>
+            <td> Full house </td>
             {game &&
               game.playerArray.map(({ scoreboard: { fullHouse } }, index) => (
                 <td key={index} className="scoreData">
@@ -177,7 +234,7 @@ function Scoreboard() {
               ))}
           </tr>
           <tr>
-            <td className="col1"> Chance </td>
+            <td> Chance </td>
             {game &&
               game.playerArray.map(({ scoreboard: { chance } }, index) => (
                 <td key={index} className="scoreData">
@@ -186,23 +243,23 @@ function Scoreboard() {
               ))}
           </tr>
           <tr>
-            <td className="col1"> Yatzy </td>
+            <td> Yatzy </td>
             {game &&
               game.playerArray.map(({ scoreboard: { yatzy } }, index) => (
                 <td key={index} className="scoreData">
                   {yatzy || ""}
                 </td>
               ))}
-          </tr>
-          <tr className="specialCell">
-            <td className="col1"> Sum: </td>
+          </tr> */}
+          {/* <tr className="specialCell">
+            <td> Sum: </td>
             {game &&
               game.playerArray.map(({ scoreboard: { totalSum } }, index) => (
                 <td key={index} className="scoreData">
                   {totalSum || ""}
                 </td>
               ))}
-          </tr>
+          </tr> */}
         </tbody>
       </table>
     </div>
