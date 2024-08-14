@@ -50,12 +50,15 @@ img {
 
 .boardContainer {
   position: relative;
-  height: 100%;
-  min-height: 50%;
 }
 
 .board {
   background-color: rgb(152, 152, 152);
+  /* background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  ); */
   display: flex;
   border-radius: 15px;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
@@ -64,11 +67,31 @@ img {
 
 .boardBottom {
   position: absolute;
-  background-color: #525252;
-  height: 30%;
+  /* background-color: #525252; 
+  background-color: rgba(
+    61,
+    61,
+    61,
+    0.5
+  );  Halvtransparent for å vise basen */
+  background: linear-gradient(
+    to bottom,
+    rgba(40, 40, 40, 0.8) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  height: 35%;
   border-radius: 13px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
   bottom: 0;
   left: 0;
+}
+.keepText {
+  font-size: 50px;
+  font-weight: bold;
+  margin-top: 0px;
+  padding-top: 0px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* ############################### */
@@ -105,11 +128,15 @@ td.names {
   color: gold;
 }
 
+.specialCell {
+  background-color: #000000;
+}
+
 .specialCell td {
   /* Sum (upper), Bonus and total sum */
   background-color: rgb(0, 63, 92);
-  border-radius: 100px;
-  border-color: black;
+  /* border-radius: 10px;
+  border-color: black; */
 }
 
 .scoreData {
@@ -126,4 +153,8 @@ table td {
   border: 2px solid #000000;
   padding: 3px;
   text-align: left;
+}
+
+table tr:nth-child(even) {
+  background-color: #3c3c3c;
 }
