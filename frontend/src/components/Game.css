@@ -19,16 +19,12 @@ body,
 }
 
 .left-item {
-  /* margin-right: 50px; */
-  /* width: 50%; */
-  margin-right: 10%;
-  margin-left: 20%;
+  flex: 0 0 50%;
 }
 
 .right-item {
-  margin-left: 0;
-  margin-right: auto;
-  width: 50%;
+  flex: 0 0 50%;
+  margin-left: 10px;
 }
 
 /* ########### */
@@ -120,12 +116,14 @@ td.col1 {
 }
 
 table {
-  width: 130%;
-  height: 100%;
+  width: auto;
+  height: auto;
   color: rgb(255, 255, 255);
   border-collapse: collapse;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
   table-layout: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .col1 {
@@ -142,6 +140,8 @@ td.names {
 .names {
   width: auto;
   color: gold;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .specialCell {
@@ -151,8 +151,6 @@ td.names {
 .specialCell td {
   /* Sum (upper), Bonus and total sum */
   background-color: rgb(0, 63, 92);
-  /* border-radius: 10px;
-  border-color: black; */
 }
 
 .scoreData {

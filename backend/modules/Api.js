@@ -10,6 +10,10 @@ router.get("/dummy-game", (req, res) => {
   const game = new Yatzy(player1);
   const player2 = new Player();
   game.addPlayerToGame(player2);
+  const player3 = new Player();
+  game.addPlayerToGame(player3);
+  const player4 = new Player();
+  game.addPlayerToGame(player4);
 
   // Manually sets gameId
   game.gameId = "testId";
@@ -23,6 +27,14 @@ router.get("/dummy-game", (req, res) => {
   player2.updateScore("ones", 10);
   player2.updateScore("twos", 20);
   player2.updateScore("threes", 30);
+  player3.setName("Vibeke");
+  player3.updateScore("ones", 8);
+  player3.updateScore("twos", 9);
+  player3.updateScore("threes", 25);
+  player4.setName("Huleridder");
+  player4.updateScore("sixes", 12);
+  player4.updateScore("fullHouse", 25);
+  player4.updateScore("yatzy", 50);
   game.updateAllScoreboards();
 
   res.json(game);
