@@ -21,3 +21,48 @@
 img {
   max-height: 200px;
 }
+
+.board {
+  background-color: aqua;
+  height: 607px;
+  width: 500px;
+  border-radius: 15px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Code that styles the scoreboard */
+
+table {
+  width: 120%;
+  height: 80%;
+  color: rgb(255, 255, 255);
+  border-collapse: collapse;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.specialCell td {
+  /* Sum (upper), Bonus and total sum */
+  background-color: rgb(0, 63, 92);
+  border-radius: 100px;
+  border-color: black;
+}
+
+.scoreData {
+  text-align: center;
+}
+
+/* Top of table */
+table thead {
+  background-color: #6f6f6f;
+}
+
+table th,
+table td {
+  border: 2px solid #000000;
+  padding: 3px;
+  text-align: left;
+}
+
+table tr:nth-child(even) {
+  background-color: #3c3c3c;
+}

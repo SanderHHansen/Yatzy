@@ -1,16 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "./Scoreboard.css";
+import "./Game.css";
 
 function Scoreboard() {
   // State for game
   const [game, setGame] = useState(null);
-
-  // const [players, setPlayers] = useState([]);
-
-  // const addPlayer = (playerToBeAdded) => {
-  //   setPlayers([...players, playerToBeAdded]);
-  // };
 
   // ! For testing. Importerer dummy.
   useEffect(() => {
@@ -33,7 +27,10 @@ function Scoreboard() {
             <th></th> {/* Leave empty */}
             {game &&
               game.playerArray.map((player, index) => (
-                <th key={index}> {player.name} </th>
+                <th key={index} className="scoreData">
+                  {" "}
+                  {player.name}{" "}
+                </th>
               ))}
           </tr>
         </thead>
@@ -42,70 +39,90 @@ function Scoreboard() {
             <td> Ones </td>
             {game &&
               game.playerArray.map(({ scoreboard: { ones } }, index) => (
-                <td key={index}>{ones || ""}</td>
+                <td key={index} className="scoreData">
+                  {ones || ""}
+                </td>
               ))}
           </tr>
           <tr>
             <td> Twos </td>
             {game &&
               game.playerArray.map(({ scoreboard: { twos } }, index) => (
-                <td key={index}>{twos || ""}</td>
+                <td key={index} className="scoreData">
+                  {twos || ""}
+                </td>
               ))}
           </tr>
           <tr>
             <td> Threes </td>
             {game &&
               game.playerArray.map(({ scoreboard: { threes } }, index) => (
-                <td key={index}>{threes || ""}</td>
+                <td key={index} className="scoreData">
+                  {threes || ""}
+                </td>
               ))}
           </tr>
           <tr>
             <td> Fours </td>
             {game &&
               game.playerArray.map(({ scoreboard: { fours } }, index) => (
-                <td key={index}>{fours || ""}</td>
+                <td key={index} className="scoreData">
+                  {fours || ""}
+                </td>
               ))}
           </tr>
           <tr>
             <td> Fives </td>
             {game &&
               game.playerArray.map(({ scoreboard: { fives } }, index) => (
-                <td key={index}>{fives || ""}</td>
+                <td key={index} className="scoreData">
+                  {fives || ""}
+                </td>
               ))}
           </tr>
           <tr>
             <td> Sixes </td>
             {game &&
               game.playerArray.map(({ scoreboard: { sixes } }, index) => (
-                <td key={index}>{sixes || ""}</td>
+                <td key={index} className="scoreData">
+                  {sixes || ""}
+                </td>
               ))}
           </tr>
-          <tr>
-            <td> Bonus </td>
-            {game &&
-              game.playerArray.map(({ scoreboard: { bonus } }, index) => (
-                <td key={index}>{bonus || ""}</td>
-              ))}
-          </tr>
-          <tr>
+          <tr className="specialCell">
             <td> Sum (Upper): </td>
             {game &&
               game.playerArray.map(({ scoreboard: { upperSum } }, index) => (
-                <td key={index}>{upperSum || ""}</td>
+                <td key={index} className="scoreData">
+                  {upperSum || ""}
+                </td>
+              ))}
+          </tr>
+          <tr className="specialCell">
+            <td> Bonus </td>
+            {game &&
+              game.playerArray.map(({ scoreboard: { bonus } }, index) => (
+                <td key={index} className="scoreData">
+                  {bonus || ""}
+                </td>
               ))}
           </tr>
           <tr>
             <td> One pair </td>
             {game &&
               game.playerArray.map(({ scoreboard: { onePair } }, index) => (
-                <td key={index}>{onePair || ""}</td>
+                <td key={index} className="scoreData">
+                  {onePair || ""}
+                </td>
               ))}
           </tr>
           <tr>
             <td> Two pairs </td>
             {game &&
               game.playerArray.map(({ scoreboard: { twoPair } }, index) => (
-                <td key={index}>{twoPair || ""}</td>
+                <td key={index} className="scoreData">
+                  {twoPair || ""}
+                </td>
               ))}
           </tr>
           <tr>
@@ -113,7 +130,9 @@ function Scoreboard() {
             {game &&
               game.playerArray.map(
                 ({ scoreboard: { threeOfAKind } }, index) => (
-                  <td key={index}>{threeOfAKind || ""}</td>
+                  <td key={index} className="scoreData">
+                    {threeOfAKind || ""}
+                  </td>
                 ),
               )}
           </tr>
@@ -121,7 +140,9 @@ function Scoreboard() {
             <td> Four of a kind </td>
             {game &&
               game.playerArray.map(({ scoreboard: { fourOfAKind } }, index) => (
-                <td key={index}>{fourOfAKind || ""}</td>
+                <td key={index} className="scoreData">
+                  {fourOfAKind || ""}
+                </td>
               ))}
           </tr>
           <tr>
@@ -129,7 +150,9 @@ function Scoreboard() {
             {game &&
               game.playerArray.map(
                 ({ scoreboard: { smallStraight } }, index) => (
-                  <td key={index}>{smallStraight || ""}</td>
+                  <td key={index} className="scoreData">
+                    {smallStraight || ""}
+                  </td>
                 ),
               )}
           </tr>
@@ -138,7 +161,9 @@ function Scoreboard() {
             {game &&
               game.playerArray.map(
                 ({ scoreboard: { largeStraight } }, index) => (
-                  <td key={index}>{largeStraight || ""}</td>
+                  <td key={index} className="scoreData">
+                    {largeStraight || ""}
+                  </td>
                 ),
               )}
           </tr>
@@ -146,28 +171,36 @@ function Scoreboard() {
             <td> Full house </td>
             {game &&
               game.playerArray.map(({ scoreboard: { fullHouse } }, index) => (
-                <td key={index}>{fullHouse || ""}</td>
+                <td key={index} className="scoreData">
+                  {fullHouse || ""}
+                </td>
               ))}
           </tr>
           <tr>
             <td> Chance </td>
             {game &&
               game.playerArray.map(({ scoreboard: { chance } }, index) => (
-                <td key={index}>{chance || ""}</td>
+                <td key={index} className="scoreData">
+                  {chance || ""}
+                </td>
               ))}
           </tr>
           <tr>
             <td> Yatzy </td>
             {game &&
               game.playerArray.map(({ scoreboard: { yatzy } }, index) => (
-                <td key={index}>{yatzy || ""}</td>
+                <td key={index} className="scoreData">
+                  {yatzy || ""}
+                </td>
               ))}
           </tr>
-          <tr>
+          <tr className="specialCell">
             <td> Sum: </td>
             {game &&
               game.playerArray.map(({ scoreboard: { totalSum } }, index) => (
-                <td key={index}>{totalSum || ""}</td>
+                <td key={index} className="scoreData">
+                  {totalSum || ""}
+                </td>
               ))}
           </tr>
         </tbody>
