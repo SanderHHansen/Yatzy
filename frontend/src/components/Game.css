@@ -50,7 +50,7 @@ body,
 
 .board {
   background-color: rgb(152, 152, 152);
-  height: 65%;
+  height: 55%;
   display: flex;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
   margin-left: 0;
@@ -67,7 +67,7 @@ body,
     rgba(152, 152, 152, 0.3) 100%
   );
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
-  height: 35%;
+  height: 45%;
   border-radius: 13px;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;

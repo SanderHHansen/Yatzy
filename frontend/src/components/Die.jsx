@@ -1,5 +1,5 @@
 import "./Game.css";
-import "./Terning.css";
+import "./Die.css";
 import { useGameDataContext } from "./GameData.jsx";
 
 function handleClick(event) {

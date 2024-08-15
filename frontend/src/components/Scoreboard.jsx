@@ -10,7 +10,8 @@ function Scoreboard() {
       <table>
         <thead>
           <tr>
-            <th className="col1"></th> {/* Leave empty */}
+            <th className="col1">{game ? `${game.gameId}` : ""}</th>{" "}
+            {/* Leave empty */}
             {game &&
               game.playerArray.map((player, index) => (
                 <th key={index} className="scoreData names">
