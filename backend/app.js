@@ -6,6 +6,8 @@ const apiRoutes = require("./modules/Api.js");
 const frontendRoutes = require("./modules/Routes.js");
 const cors = require("cors");
 const { handleSockets, sendGameData } = require("./modules/Sockets.js");
+// TODO All current games. Should be changed to postgres-database.
+const allGames = []; /* Constant for all games on server */
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -21,13 +23,10 @@ app.use(cors());
 app.use("/api", apiRoutes); // Reroutes API-calls to own file
 app.use(frontendRoutes); // Reroutes frontend-routes
 
-// TODO All current games. Should be changed to postgres-database.
-app.locals.games = {};
-
 // Starting server on specified port
 server.listen(port, () => {
   console.log(`Backend server running on port: ${port}`);
   handleSockets(server);
 });
 
-module.exports = { server, app };
+module.exports = { server, app, allGames };

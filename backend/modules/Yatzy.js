@@ -1,6 +1,7 @@
 const Player = require("./Player.js");
 const { v4: uuidv4 } = require("uuid");
 const { sendGameData } = require("./Sockets.js");
+const { addGameToAllGames } = require("./LocalGames.js");
 
 class Yatzy {
   constructor(host) {
@@ -136,6 +137,11 @@ class Yatzy {
   // Sends updated game data to socket for this game.
   updateGameData() {
     sendGameData(this.gameId, this);
+  }
+
+  // Adds this game to a global variable for server
+  addGameToLocalGames() {
+    addGameToAllGames(this);
   }
 }
 

@@ -7,6 +7,7 @@ const GameDataContext = createContext();
 export const GameDataContextProvider = ({ children }) => {
   const [gameData, setGameData] = useState(null);
 
+  // TODO: Must change so that gameID is used to recover  game.
   // ! For testing. Importerer dummy.
   useEffect(() => {
     axios
