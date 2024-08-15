@@ -3,11 +3,11 @@ import Die from "./Die.jsx";
 function DiceSection({ name, position }) {
   return (
     <div className={name}>
-      <Die extraClass="die1" pos={position} />
-      <Die extraClass="die2" pos={position} />
-      <Die extraClass="die3" pos={position} />
-      <Die extraClass="die4" pos={position} />
-      <Die extraClass="die5" pos={position} />
+      <Die index="0" pos={position} />
+      <Die index="1" pos={position} />
+      <Die index="2" pos={position} />
+      <Die index="3" pos={position} />
+      <Die index="4" pos={position} />
     </div>
   );
 }

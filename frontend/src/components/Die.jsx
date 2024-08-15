@@ -21,13 +21,31 @@ function handleClick(event) {
   }, 1100);
 }
 
-function Die({ extraClass, pos }) {
+function Die({ index, pos }) {
   const game = useGameDataContext();
-  return (
-    <div className={`die ${extraClass} ${pos}`} onClick={handleClick}>
-      {game ? `${game.currentPlayer.diceArray[0].value}` : "0"}
-    </div>
-  );
+  if (
+    game &&
+    pos === "top" &&
+    game.currentPlayer.diceArray[index].isSaved === true
+  ) {
+    return (
+      <div className={`die ${index} ${pos}`} onClick={handleClick}>
+        {game ? `${game.currentPlayer.diceArray[index].value}` : "0"}
+      </div>
+    );
+  }
+
+  if (
+    game &&
+    pos === "bottom" &&
+    game.currentPlayer.diceArray[index].isSaved === false
+  ) {
+    return (
+      <div className={`die ${index} ${pos}`} onClick={handleClick}>
+        {game ? `${game.currentPlayer.diceArray[index].value}` : "0"}
+      </div>
+    );
+  }
 }
 
 export default Die;
