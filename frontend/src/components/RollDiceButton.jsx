@@ -1,7 +1,13 @@
+// import io from "socket.io";
+// import { useGameDataContext } from "./GameData.jsx";
+
 function handleClick() {
+  // Gets gameId from active game.
+  // const gameId = useGameDataContext().gameId;
+
   const Dice = Array.from(document.getElementsByClassName("top"));
   Dice.forEach((element) => {
-    // Start animation
+    // Starts animation
     element.classList.remove("roll");
     void element.offsetWidth; // Forces reflow of object
     element.classList.add("roll");
