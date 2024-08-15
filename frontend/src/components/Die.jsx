@@ -2,8 +2,6 @@ import "./Game.css";
 import "./Terning.css";
 import { useGameDataContext } from "./GameData.jsx";
 
-const game = useGameDataContext();
-
 function handleClick(event) {
   const element = event.currentTarget;
 
@@ -24,9 +22,10 @@ function handleClick(event) {
 }
 
 function Die({ extraClass, pos }) {
+  const game = useGameDataContext();
   return (
     <div className={`die ${extraClass} ${pos}`} onClick={handleClick}>
-      5
+      {game ? `${game.currentPlayer.diceArray[0].value}` : "0"}
     </div>
   );
 }

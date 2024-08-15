@@ -12,6 +12,7 @@ export const GameDataContextProvider = ({ children }) => {
   useEffect(() => {
     axios
       .get("http://localhost:3000/api/dummy-game")
+      .then(console.log("BLE HENTET"))
       .then((response) => {
         setGameData(response.data);
       })

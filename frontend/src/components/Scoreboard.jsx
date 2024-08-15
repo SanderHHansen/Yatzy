@@ -14,8 +14,9 @@ function Scoreboard() {
             {game &&
               game.playerArray.map((player, index) => (
                 <th key={index} className="scoreData names">
-                  {" "}
-                  {player.name}{" "}
+                  {""}
+                  {player.name}
+                  {""}
                 </th>
               ))}
           </tr>
