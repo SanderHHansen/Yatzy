@@ -6,12 +6,12 @@ function PlayArea() {
       <div className="rightContainer">
         <div className="boardContainer">
           <div className="board">
-            <DiceSection />
+            <DiceSection name="diceTopSection" />
           </div>
           <div className="boardBottom">
             <p className="keepText"> Dice to keep </p>
             <div>
-              <DiceSection />
+              <DiceSection name="diceBottomSection" />
             </div>
           </div>
         </div>

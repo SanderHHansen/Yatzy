@@ -50,11 +50,6 @@ body,
 
 .board {
   background-color: rgb(152, 152, 152);
-  /* background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.8) 0%,
-    rgba(0, 0, 0, 0.3) 100%
-  ); */
   height: 65%;
   display: flex;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
@@ -107,13 +102,15 @@ body,
 /* Bottom dice Styling */
 /* ################### */
 
-.diceBottomSection {
+.diceBottomSection,
+.diceTopSection {
   display: flex;
   align-items: center;
   justify-content: center;
   left: 25%;
   gap: 2vw;
   margin-top: 0%;
+  width: 100%;
 }
 
 .diceBottom {

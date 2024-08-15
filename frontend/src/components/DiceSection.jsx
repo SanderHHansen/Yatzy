@@ -2,7 +2,7 @@ import dieImage from "../assets/die.png";
 import "./Game.css";
 import "./Terning.css";
 
-function DiceSection() {
+function DiceSection({ name }) {
   function handleClick(event) {
     const element = event.currentTarget;
 
@@ -31,7 +31,7 @@ function DiceSection() {
   }
 
   return (
-    <div className="diceBottomSection">
+    <div className={name}>
       <Die extraClass="die1" />
       <Die extraClass="die2" />
       <Die extraClass="die3" />
