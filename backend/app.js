@@ -7,7 +7,6 @@ const frontendRoutes = require("./modules/Routes.js");
 const cors = require("cors");
 const { handleSockets, sendGameData } = require("./modules/Sockets.js");
 // TODO All current games. Should be changed to postgres-database.
-const allGames = []; /* Constant for all games on server */
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -29,4 +28,4 @@ server.listen(port, () => {
   handleSockets(server);
 });
 
-module.exports = { server, app, allGames };
+module.exports = { server, app };

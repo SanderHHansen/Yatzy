@@ -1,7 +1,7 @@
 const Player = require("./Player.js");
 const { v4: uuidv4 } = require("uuid");
 const { sendGameData } = require("./Sockets.js");
-const { addGameToAllGames } = require("./LocalGames.js");
+const { addGameToAllGames } = require("./GameManager.js");
 
 class Yatzy {
   constructor(host) {

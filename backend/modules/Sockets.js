@@ -1,4 +1,5 @@
 const { Server } = require("socket.io");
+const { getAllGames } = require("./GameManager.js");
 
 let io; // Oppretter en referanse for 'io' som vil bli satt senere
 
