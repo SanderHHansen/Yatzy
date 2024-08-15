@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { addGameToAllGames } = require("./GameManager.js");
 
 // ! Only for testing. Returns dummy-player
 const Player = require("./Player");
@@ -40,8 +41,7 @@ router.get("/dummy-game", (req, res) => {
   game.flipIsSaved(player1, 2);
   game.flipIsSaved(player1, 4);
   game.updateAllScoreboards();
-
-  res.json(game);
+  addGameToAllGames(game);
 });
 
 router.get("/dummy-player", (req, res) => {

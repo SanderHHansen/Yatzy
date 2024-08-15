@@ -8,18 +8,24 @@ function handleSockets(server) {
   io.on("connection", (socket) => {
     console.log("A user connected");
 
+    socket.on("joinGame", (gameId) => {
+      socket.join(gameId); // Client joins game based on gameId
+    });
+
     socket.on("disconnect", () => {
       console.log("A user disconnected");
     });
   });
 }
 
-function sendGameData(gameId, data) {
-  if (io) {
-    // Sjekker at 'io' er satt før du prøver å bruke det
+function sendGameData(gameId) {
+  const data = getAllGames.find((game) => game.gameId === gameId);
+
+  if (io && data) {
+    // Checks if io exists and data exists.
     io.to(gameId).emit("gameUpdate", data);
   } else {
-    console.error("Socket.io is not initialized.");
+    console.error("Socket.io is not initialized, or game-data does not exist.");
   }
 }
 

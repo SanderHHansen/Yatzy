@@ -134,10 +134,11 @@ class Yatzy {
     });
   }
 
+  // ! Deprecated code? May have to remove later
   // Sends updated game data to socket for this game.
-  updateGameData() {
-    sendGameData(this.gameId, this);
-  }
+  // updateGameData() {
+  //   sendGameData(this.gameId, this);
+  // }
 
   // Adds this game to a global variable for server
   addGameToLocalGames() {
