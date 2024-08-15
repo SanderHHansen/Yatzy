@@ -1,23 +1,9 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
 import "./Game.css";
+import { useGameDataContext } from "./GameData.jsx";
 
 function Scoreboard() {
-  // State for game
-  const [game, setGame] = useState(null);
-
-  // ! For testing. Importerer dummy.
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/api/dummy-game")
-      .then((response) => {
-        setGame(response.data);
-      })
-      .catch((error) => {
-        console.error("Couldn't fetch file", error);
-      });
-  }, []);
-  // ! Slutt testing.
+  // Getting gameData from context.
+  const game = useGameDataContext();
 
   return (
     <div>
