@@ -1,4 +1,5 @@
 import DiceSection from "./DiceSection.jsx";
+import RollDiceButton from "./RollDiceButton.jsx";
 
 function PlayArea() {
   return (
@@ -15,7 +16,7 @@ function PlayArea() {
             </div>
           </div>
         </div>
-        <button className="rollDiceButton"> Roll Dice </button>
+        <RollDiceButton />
       </div>
     </>
   );
