@@ -35,6 +35,9 @@ router.get("/dummy-game", (req, res) => {
   player4.updateScore("sixes", 12);
   player4.updateScore("fullHouse", 25);
   player4.updateScore("yatzy", 50);
+  game.rollDice(player1);
+  game.flipIsSaved(player1, 2);
+  game.flipIsSaved(player1, 4);
   game.updateAllScoreboards();
 
   res.json(game);

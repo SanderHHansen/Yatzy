@@ -8,7 +8,7 @@ class Yatzy {
     this.host = host; // Person who created the lobby.
     this.playerArray = [host]; // Array with all the players.
     this.currentPlayer = host; // The player whos turn it is
-    const rollCount = 0; // Keep track of number of throws current player has done
+    this.rollCount = 0; // Keep track of number of throws current player has done
   }
 
   addPlayerToGame(newPlayer) {
@@ -102,7 +102,7 @@ class Yatzy {
       return;
     }
 
-    player.diceArray[diceIndex].flipIsSaved;
+    player.diceArray[diceIndex].flipIsSaved();
   }
 
   /* Sets score for a given player and given section.
