@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
-import io from "socket.io-client";
-
-const socket = io("http://localhost:3000");
+import socket from "./SocketFrontend.jsx";
 
 function Home() {
   const navigate = useNavigate();
