@@ -84,6 +84,15 @@ body,
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
+/* ######################### */
+/* Roll Dice section Styling */
+/* ######################### */
+.rollContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .rollDiceButton {
   left: 0;
   bottom: 0;
@@ -96,6 +105,11 @@ body,
   font-size: 20px;
   background-color: cyan;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.rollCounter {
+  display: flex;
+  flex-direction: column;
 }
 
 /* ################### */

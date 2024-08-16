@@ -16,7 +16,13 @@ function PlayArea() {
             </div>
           </div>
         </div>
-        <RollDiceButton />
+        <div className="rollContainer">
+          <RollDiceButton className="rollBtn" />
+          <div className="rollCounter">
+            <button>Container1</button>
+            <button>Container2</button>
+          </div>
+        </div>
       </div>
     </>
   );
