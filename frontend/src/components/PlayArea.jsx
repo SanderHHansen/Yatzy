@@ -1,30 +1,29 @@
 import DiceSection from "./DiceSection.jsx";
 import RollDiceButton from "./RollDiceButton.jsx";
+import RollCounter from "./RollCounter.jsx";
 
 function PlayArea() {
   return (
-    <>
-      <div className="rightContainer">
-        <div className="boardContainer">
-          <div className="board">
-            <DiceSection name="diceTopSection" position="top" />
-          </div>
-          <div className="boardBottom">
-            <p className="keepText"> Dice to keep </p>
-            <div>
-              <DiceSection name="diceBottomSection" position="bottom" />
-            </div>
-          </div>
+    <div className="rightContainer">
+      <div className="boardContainer">
+        <div className="board">
+          <DiceSection name="diceTopSection" position="top" />
         </div>
-        <div className="rollContainer">
-          <RollDiceButton className="rollBtn" />
-          <div className="rollCounter">
-            <button>Container1</button>
-            <button>Container2</button>
+        <div className="boardBottom">
+          <p className="keepText"> Dice to keep </p>
+          <div>
+            <DiceSection name="diceBottomSection" position="bottom" />
           </div>
         </div>
       </div>
-    </>
+      <div className="rollContainer">
+        <RollDiceButton />
+        <div className="leftRollContainer">
+          <p>Rolls left</p>
+          <RollCounter />
+        </div>
+      </div>
+    </div>
   );
 }
 
