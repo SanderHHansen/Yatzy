@@ -17,6 +17,7 @@
 
 .logo {
   max-height: 60%;
+  cursor: pointer;
   /* filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5)); */
 }
 
@@ -29,4 +30,5 @@ button {
   color: rgb(249, 165, 20);
   margin-right: 150px;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }

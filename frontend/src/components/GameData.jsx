@@ -18,13 +18,13 @@ export const GameDataContextProvider = ({ children }) => {
     axios.get("http://localhost:3000/api/dummy-game").catch((error) => {
       console.error("Couldn't fetch file", error);
     });
+    socket.emit("joinGame", "testId");
+
+    socket.on("gameUpdate", (data) => {
+      setGameData(data);
+    });
   }, []);
   // ! Slutt testing.
-  socket.emit("joinGame", "testId");
-
-  socket.on("gameUpdate", (data) => {
-    setGameData(data);
-  });
 
   return (
     <GameDataContext.Provider value={gameData}>

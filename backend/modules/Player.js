@@ -4,8 +4,8 @@ const Scores = require("./Scores.js");
 const { v4: uuidv4 } = require("uuid");
 
 class Player {
-  constructor() {
-    this.name = null;
+  constructor(playerName) {
+    this.name = playerName;
     this.playerId = uuidv4();
     this.diceArray = [];
     this.roundsPlayed = 0;

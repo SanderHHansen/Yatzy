@@ -1,0 +1,18 @@
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5%;
+  height: 80%;
+  width: 100%;
+}
+
+.buttons button {
+  height: 20%;
+  width: 25%;
+  font-size: 2vw;
+  font-weight: 600;
+  color: whitesmoke;
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+}

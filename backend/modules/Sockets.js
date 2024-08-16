@@ -1,5 +1,5 @@
 const { Server } = require("socket.io");
-const { getAllGames, getGameByID } = require("./GameManager.js");
+const { getGameByID, createGame } = require("./GameManager.js");
 
 let io; // Oppretter en referanse for 'io' som vil bli satt senere
 
@@ -15,11 +15,21 @@ function handleSockets(server) {
 
     socket.on("joinGame", (gameId) => {
       socket.join(gameId); // Client joins game based on gameId
+      console.log("User joined socket called: " + gameId);
       sendGameData(gameId);
     });
 
     socket.on("disconnect", () => {
       console.log("A user disconnected");
+    });
+
+    socket.on("createNewGame", (hostName) => {
+      console.log("Creating new game. Host: " + hostName);
+      const gameId = createGame(hostName);
+      // Adds user to Room.
+      socket.join(gameId);
+      console.log("User joined socket called: " + gameId);
+      socket.emit("redirect", "/game");
     });
   });
 }
