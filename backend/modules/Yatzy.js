@@ -8,6 +8,12 @@ class Yatzy {
     this.playerArray = [host]; // Array with all the players.
     this.currentPlayer = host; // The player whos turn it is
     this.rollCount = 0; // Keep track of number of throws current player has done
+
+    // Manually sets dice of first player. Setup for website.
+    this.playerArray[0].diceArray.forEach((die) => {
+      die.isSaved = false;
+      die.value = 0;
+    });
   }
 
   addPlayerToGame(newPlayer) {
@@ -97,6 +103,10 @@ class Yatzy {
 
   // Flips value of "isSaved" given player and diceIndex.
   flipIsSaved(player, diceIndex) {
+    if (this.rollCount === 0) {
+      return;
+    }
+
     if (!this.isPlayerCurrentPlayer(player)) {
       return;
     }
@@ -108,7 +118,7 @@ class Yatzy {
    * "section" is a string perfectly matching "onePair", "fullHouse" etc.
    */
   selectScore(player, section) {
-    if (!this.isPlayerCurrentPlayer(player)) {
+    if (!this.isPlayerCurrentPlayer(player) && rollCount != 0) {
       return;
     }
 

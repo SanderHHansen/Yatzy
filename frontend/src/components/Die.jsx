@@ -26,7 +26,7 @@ function Die({ index, pos }) {
   if (
     game &&
     pos === "top" &&
-    game.currentPlayer.diceArray[index].isSaved === true
+    game.currentPlayer.diceArray[index].isSaved === false
   ) {
     return (
       <div className={`die ${index} ${pos}`} onClick={handleClick}>
@@ -38,7 +38,7 @@ function Die({ index, pos }) {
   if (
     game &&
     pos === "bottom" &&
-    game.currentPlayer.diceArray[index].isSaved === false
+    game.currentPlayer.diceArray[index].isSaved === true
   ) {
     return (
       <div className={`die ${index} ${pos}`} onClick={handleClick}>

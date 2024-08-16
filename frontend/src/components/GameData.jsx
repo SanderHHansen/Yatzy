@@ -20,14 +20,6 @@ export const GameDataContextProvider = ({ children }) => {
 
   // }, []);
   // ! Slutt testing.
-
-  // useEffect(() => {
-  //   socket.on("gameUpdate", (data) => {
-  //     setGameData(data);
-  //     console.log("Data har blitt satt!");
-  //   });
-  // }, []);
-
   socket.on("gameUpdate", (data) => {
     setGameData(data);
     console.log("Data har blitt satt!");
