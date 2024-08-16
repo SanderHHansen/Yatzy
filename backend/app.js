@@ -21,6 +21,12 @@ app.use(cors());
 // Routing setup
 app.use("/api", apiRoutes); // Reroutes API-calls to own file
 app.use(frontendRoutes); // Reroutes frontend-routes
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST"],
+  })
+);
 
 // Starting server on specified port
 server.listen(port, () => {

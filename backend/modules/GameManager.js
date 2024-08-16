@@ -3,12 +3,12 @@
 const allGames = [];
 
 function addGameToAllGames(game) {
-  allGames.push();
+  allGames.push(game);
 }
 
 // Returns game that matches ID given.
 function getGameByID(id) {
-  return allGames.find((game) => game.Id === id) || null;
+  return allGames.find((game) => game.gameId === id) || null;
 }
 
 function getAllGames() {
