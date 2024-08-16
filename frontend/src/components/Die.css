@@ -3,8 +3,8 @@
 }
 
 .die {
-  height: clamp(5vw, 2vw, 9vw);
-  width: clamp(5vw, 2vw, 9vw);
+  height: clamp(4vw, 2vw, 8vw);
+  width: clamp(4vw, 2vw, 8vw);
   border-radius: 10px;
   background-color: rgb(255, 255, 255);
   border: 4px solid #000000;
