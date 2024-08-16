@@ -3,7 +3,7 @@ import { useGameDataContext } from "./GameData.jsx";
 
 function Scoreboard() {
   // Getting gameData from context.
-  const game = useGameDataContext();
+  const { gameData: game } = useGameDataContext();
 
   return (
     <div>

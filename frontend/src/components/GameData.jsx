@@ -9,6 +9,7 @@ const GameDataContext = createContext();
 
 export const GameDataContextProvider = ({ children }) => {
   const [gameData, setGameData] = useState(null);
+  const [playerId, setPlayerId] = useState(null);
 
   // TODO: Must change so that gameID is used to get game.
   // ! For testing. Creates and joins dummy-game.
@@ -25,8 +26,13 @@ export const GameDataContextProvider = ({ children }) => {
     console.log("Data har blitt satt!");
   });
 
+  socket.on("playerId", (playerId) => {
+    setPlayerId(playerId);
+    console.log("PlayerId has been set.");
+  });
+
   return (
-    <GameDataContext.Provider value={gameData}>
+    <GameDataContext.Provider value={{ gameData, playerId }}>
       {children}
     </GameDataContext.Provider>
   );

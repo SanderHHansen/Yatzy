@@ -22,7 +22,7 @@ function handleClick(event) {
 }
 
 function Die({ index, pos }) {
-  const game = useGameDataContext();
+  const { gameData: game } = useGameDataContext();
   if (
     game &&
     pos === "top" &&

@@ -34,6 +34,10 @@ function handleSockets(server) {
       // Sending gameData update.
       sendGameData(gameId);
 
+      // Sending back unique player-ID.
+      const playerId = getGameByID(gameId).host.playerId;
+      socket.emit("playerId", playerId);
+
       // Redirecting user to game site.
       socket.emit("redirect", "/game");
     });
