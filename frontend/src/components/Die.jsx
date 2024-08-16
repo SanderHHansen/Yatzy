@@ -2,6 +2,7 @@ import "./Game.css";
 import "./Die.css";
 import { useGameDataContext } from "./GameData.jsx";
 
+// TODO: Må fjernes etter hvert. Skal ikke ha noen funksjon.
 function handleClick(event) {
   const element = event.currentTarget;
 
