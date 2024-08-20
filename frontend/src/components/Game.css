@@ -185,23 +185,27 @@ body,
 /* ############################### */
 
 /* First column*/
-td.col1 {
-  padding-left: 10px; /* Length from left wall to text */
+.table-container {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  overflow: hidden; /* Shows rounded corners */
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
 }
 
 table {
-  width: 70%;
+  width: 100%;
   height: auto;
   color: rgb(255, 255, 255);
-  /* border-collapse: collapse; */
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  border-collapse: collapse;
   table-layout: auto;
   margin-left: auto;
   margin-right: auto;
+}
 
-  border-collapse: separate;
-  border-spacing: 0;
-  overflow: hidden;
+td.col1 {
+  padding-left: 10px; /* Length from left wall to text */
 }
 
 .col1 {
@@ -210,9 +214,9 @@ table {
 
 th.names,
 td.names {
-  white-space: nowrap; /* Sikrer at teksten ikke brytes */
-  overflow: hidden; /* Skjuler overflødig innhold */
-  text-overflow: ellipsis; /* Viser ellipsis (tre prikker) ved overflod */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .names {
@@ -242,7 +246,7 @@ table thead {
 
 table th,
 table td {
-  border: 2px solid #000000;
+  border: 3px solid #000000;
   padding: 3px;
   text-align: left;
 }
@@ -251,22 +255,22 @@ table tr:nth-child(even) {
   background-color: #3c3c3c;
 }
 
-/* Rounded corners on table */
+/* Avrund hjørneceller */
 table th:first-child {
-  border-top-left-radius: 5px;
+  border-top-left-radius: 10px;
+  border-color: red;
 }
 
 table th:last-child {
-  border-top-right-radius: 5px;
+  border-top-right-radius: 10px;
 }
 
 table tr:last-child td:first-child {
-  border: 2px solid orange;
-  border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 10px;
 }
 
 table tr:last-child td:last-child {
-  border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 10px;
 }
 
 .rainbow {
