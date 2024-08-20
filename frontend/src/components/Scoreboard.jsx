@@ -6,7 +6,7 @@ function Scoreboard() {
   const { gameData: game } = useGameDataContext();
 
   return (
-    <div>
+    <div className="table-container">
       <table>
         <thead>
           <tr>

@@ -19,7 +19,7 @@ function PlayArea() {
       <div className="rollContainer">
         <RollDiceButton />
         <div className="leftRollContainer">
-          <p>Rolls left</p>
+          <p className="rollsLeftText">Rolls:</p>
           <RollCounter />
         </div>
       </div>
