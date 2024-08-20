@@ -62,6 +62,18 @@ class Yatzy {
     return false;
   }
 
+  /* Returns Player that matches playerId given */
+  getPlayerByPlayerId(playerId) {
+    for (let i = 0; i < this.playerArray.length; i++) {
+      let player = this.playerArray[i];
+      if (player.playerId === playerId) {
+        return player;
+      }
+    }
+    console.log("Couldn't find player byt this playerId.");
+    return null;
+  }
+
   // Logic for what happens after player finished round.
   finishRound() {
     // Resets rollCount

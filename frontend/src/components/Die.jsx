@@ -1,49 +1,53 @@
+import { useState, useEffect, useRef } from "react";
+import { useGameDataContext } from "./GameData.jsx";
+import { useScrambleContext } from "./ScrambleContext.jsx";
 import "./Game.css";
 import "./Die.css";
-import { useGameDataContext } from "./GameData.jsx";
-
-// TODO: Må fjernes etter hvert. Skal ikke ha noen funksjon.
-function handleClick(event) {
-  const element = event.currentTarget;
-
-  // Start animation
-  element.classList.remove("roll");
-  void element.offsetWidth; // Forces reflow of object
-  element.classList.add("roll");
-
-  // Visually scrambles dice
-  const scrambling = setInterval(() => {
-    element.textContent = Math.floor(Math.random() * 6) + 1;
-  }, 100);
-
-  // Stops scrambling of dice after given ms.
-  setTimeout(() => {
-    clearInterval(scrambling);
-  }, 1100);
-}
 
 function Die({ index, pos }) {
   const { gameData: game } = useGameDataContext();
-  if (
-    game &&
-    pos === "top" &&
-    game.currentPlayer.diceArray[index].isSaved === false
-  ) {
-    return (
-      <div className={`die ${index} ${pos}`} onClick={handleClick}>
-        {game ? `${game.currentPlayer.diceArray[index].value}` : "0"}
-      </div>
-    );
-  }
+  const { scramble } = useScrambleContext();
+  const [dieValue, setDieValue] = useState(
+    game ? game.currentPlayer.diceArray[index].value : "",
+  );
 
-  if (
-    game &&
-    pos === "bottom" &&
-    game.currentPlayer.diceArray[index].isSaved === true
-  ) {
+  const dieRef = useRef(null);
+
+  const isTop = pos === "top" && !game.currentPlayer.diceArray[index].isSaved;
+
+  useEffect(() => {
+    setDieValue(game ? game.currentPlayer.diceArray[index].value : "");
+  }, [game]);
+
+  // For listening to scramble-event
+  useEffect(() => {
+    const handleScramble = () => {
+      if (!isTop) return;
+
+      if (element) {
+        const element = dieRef.current;
+        element.classList.remove("roll");
+        void element.offsetWidth; // Forces reflow of object
+        element.classList.add("roll");
+
+        const scrambleInterval = setInterval(() => {
+          element.textContent = Math.floor(Math.random() * 6) + 1;
+        }, 100);
+
+        setTimeout(() => {
+          clearInterval(scrambleInterval);
+          setDieValue(game ? game.currentPlayer.diceArray[index].value : "");
+        }, 1100);
+
+        return () => clearInterval(scrambleInterval); // Cleanup on unmount
+      }
+    };
+  }, [scramble]);
+
+  if (game) {
     return (
-      <div className={`die ${index} ${pos}`} onClick={handleClick}>
-        {game ? `${game.currentPlayer.diceArray[index].value}` : "0"}
+      <div className={`die ${index} ${pos}`} ref={dieRef}>
+        {dieValue}
       </div>
     );
   }

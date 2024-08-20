@@ -1,40 +1,42 @@
 // import io from "socket.io";
 import { useGameDataContext } from "./GameData.jsx";
+import { useScrambleContext } from "./ScrambleContext.jsx";
+import socket from "./SocketFrontend.jsx";
 
 function RollDiceButton() {
   const { playerId, gameData } = useGameDataContext();
+  const { setScramble } = useScrambleContext();
 
   function handleClick() {
+    // Checks if game exists
+    if (!gameData) {
+      return;
+    }
+
+    // Checks if rollCount is maxed.
+    if (gameData.rollCount === 3) {
+      return;
+    }
+
     // Checks if player is allowed to act
     if (playerId !== gameData.currentPlayer.playerId) {
       return; // Returns early if player isn't current player.
     }
 
-    const Dice = Array.from(document.getElementsByClassName("top"));
+    // Sends operation to backend.
+    socket.emit("rollDice");
 
-    Dice.forEach((element) => {
-      // Starts animation
-      element.classList.remove("roll");
-      void element.offsetWidth; // Forces reflow of object
-      element.classList.add("roll");
-
-      // Visually scrambles dice
-      const scrambling = setInterval(() => {
-        element.textContent = Math.floor(Math.random() * 6) + 1;
-      }, 100);
-
-      // Stops scrambling of dice after given ms.
-      setTimeout(() => {
-        clearInterval(scrambling);
-      }, 1100);
-    });
+    // Calls for scramble-animation to happen in frontend.
+    setScramble((prev) => prev + 1);
   }
 
   return (
-    <button className="rollDiceButton" onClick={handleClick}>
-      {" "}
-      Roll Dice{" "}
-    </button>
+    <>
+      <button className="rollDiceButton" onClick={handleClick}>
+        {" "}
+        Roll Dice{" "}
+      </button>
+    </>
   );
 }
 

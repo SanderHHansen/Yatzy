@@ -13,16 +13,29 @@ function handleSockets(server) {
   io.on("connection", (socket) => {
     console.log("A user connected");
 
+    // Todo This code is not working properly.
     socket.on("joinGame", (gameId) => {
+      console.log("joinGame code is running!");
       socket.join(gameId); // Client joins game based on gameId
+      socket.gameId = gameId;
       console.log("User joined socket called: " + gameId);
+      const gameData = getGameByID(gameId);
       sendGameData(gameId);
+
+      /* Saves gameData to Socket */
+      if (gameData) {
+        socket.gameData = gameData;
+        console.log("Game data was set: ", gameData);
+      } else {
+        console.error("Game data was not found for gameId: " + gameId);
+      }
     });
 
     socket.on("disconnect", () => {
       console.log("A user disconnected");
     });
 
+    // TODO: Should be combining this and "joinGame" somehow.
     socket.on("createNewGame", (hostName) => {
       console.log("Creating new game. Host: " + hostName);
       const gameId = createGame(hostName);
@@ -34,12 +47,23 @@ function handleSockets(server) {
       // Sending gameData update.
       sendGameData(gameId);
 
-      // Sending back unique player-ID.
-      const playerId = getGameByID(gameId).host.playerId;
-      socket.emit("playerId", playerId);
+      // Setting socket values
+      socket.gameData = getGameByID(gameId);
+      socket.gameId = gameId;
+      socket.playerId = socket.gameData.host.playerId;
+
+      socket.emit("playerId", socket.playerId);
 
       // Redirecting user to game site.
       socket.emit("redirect", "/game");
+    });
+
+    socket.on("rollDice", () => {
+      console.log("Rolling dice for game:" + socket.gameId);
+      const game = socket.gameData;
+      const player = game.getPlayerByPlayerId(socket.playerId);
+      game.rollDice(player);
+      sendGameData(socket.gameId);
     });
   });
 }
