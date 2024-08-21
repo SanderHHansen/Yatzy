@@ -27,11 +27,17 @@ function Scoreboard() {
           <tr>
             <td className="col1"> Ones </td>
             {game &&
-              game.playerArray.map(({ scoreboard: { ones } }, index) => (
-                <td key={index} className="scoreData">
-                  {ones || ""}
-                </td>
-              ))}
+              game.playerArray.map(({ scoreboard: { ones } }, index) =>
+                ones ? (
+                  <td key={index} className="scoreData">
+                    {ones || ""}
+                  </td>
+                ) : (
+                  <td key={index} className="scoreData">
+                    {ones || ""}
+                  </td>
+                ),
+              )}
           </tr>
           <tr>
             <td className="col1"> Twos </td>

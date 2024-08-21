@@ -8,6 +8,7 @@ class Yatzy {
     this.playerArray = [host]; // Array with all the players.
     this.currentPlayer = host; // The player whos turn it is
     this.rollCount = 0; // Keep track of number of throws current player has done
+    this.scoresPossible = this.getScores();
 
     // Manually sets dice of first player. Setup for website.
     this.playerArray[0].diceArray.forEach((die) => {
@@ -111,6 +112,7 @@ class Yatzy {
 
     player.rollDice();
     this.rollCount++;
+    this.updateGameData();
   }
 
   // Flips value of "isSaved" given player and diceIndex.
@@ -148,10 +150,13 @@ class Yatzy {
   }
 
   // Updates all scoreboards for all players without changing anything.
-  updateAllScoreboards() {
+  updateGameData() {
     this.playerArray.forEach((player) => {
       player.updateScoreboardNoChanges();
     });
+
+    // Updates scoresPossible
+    this.scoresPossible = getScores();
   }
 }
 
