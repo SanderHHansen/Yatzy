@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { useGameDataContext } from "./GameData.jsx";
 import { useScrambleContext } from "./ScrambleContext.jsx";
+import socket from "./SocketFrontend.jsx";
 import "./Game.css";
 import "./Die.css";
 
 function Die({ index, pos }) {
-  const { gameData: game } = useGameDataContext();
+  const { playerId, gameData: game } = useGameDataContext();
   const { scramble } = useScrambleContext();
   const [dieValue, setDieValue] = useState(
     game ? game.currentPlayer.diceArray[index].value : "Feil",
@@ -54,6 +55,16 @@ function Die({ index, pos }) {
     }
   }, [scramble]);
 
+  // Function that flips if dice is saved or not.
+  function flipSavedState() {
+    // Checks if player is allowed to act
+    if (playerId !== game.currentPlayer.playerId) {
+      return; // Returns early if player isn't current player.
+    }
+
+    socket.emit("flipIsSavedForDie", index);
+  }
+
   // Returns shown dice
   if (
     game &&
@@ -61,7 +72,11 @@ function Die({ index, pos }) {
     game.currentPlayer.diceArray[index].isSaved === false
   ) {
     return (
-      <div className={`die ${index} ${pos}`} ref={dieRef}>
+      <div
+        className={`die ${index} ${pos}`}
+        ref={dieRef}
+        onClick={flipSavedState}
+      >
         {game ? `${dieValue}` : "0"}
       </div>
     );
@@ -73,7 +88,11 @@ function Die({ index, pos }) {
     game.currentPlayer.diceArray[index].isSaved === true
   ) {
     return (
-      <div className={`die ${index} ${pos}`} ref={dieRef}>
+      <div
+        className={`die ${index} ${pos}`}
+        ref={dieRef}
+        onClick={flipSavedState}
+      >
         {game ? `${dieValue}` : "0"}
       </div>
     );

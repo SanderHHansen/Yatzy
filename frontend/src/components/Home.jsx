@@ -23,10 +23,6 @@ function Home() {
         <button onClick={createNewGame}> Create game </button>
         <button> Join game </button>
       </div>
-      <button onClick={handleButtonClick}>
-        {" "}
-        Click heASDASDre to go to next page{" "}
-      </button>
     </>
   );
 }

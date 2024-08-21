@@ -10,6 +10,7 @@ function handleSockets(server) {
       methods: ["GET", "POST"],
     },
   }); // io instansen opprettes med server objektet
+
   io.on("connection", (socket) => {
     console.log("A user connected");
 
@@ -51,6 +52,7 @@ function handleSockets(server) {
       socket.gameData = getGameByID(gameId);
       socket.gameId = gameId;
       socket.playerId = socket.gameData.host.playerId;
+      socket.player = socket.gameData.getPlayerByPlayerId(socket.playerId);
 
       socket.emit("playerId", socket.playerId);
 
@@ -59,10 +61,17 @@ function handleSockets(server) {
     });
 
     socket.on("rollDice", () => {
-      console.log("Rolling dice for game:" + socket.gameId);
+      // console.log("Rolling dice for game:" + socket.gameId);
       const game = socket.gameData;
-      const player = game.getPlayerByPlayerId(socket.playerId);
-      game.rollDice(player);
+      game.rollDice(socket.player);
+      sendGameData(socket.gameId);
+    });
+
+    // Flips isSaved for a given die.
+    socket.on("flipIsSavedForDie", (dieIndex) => {
+      // console.log("Index received is: " + dieIndex);
+      socket.gameData.flipIsSaved(socket.player, dieIndex);
+      // console.log("Updated dieValue for player: " + socket.playerId);
       sendGameData(socket.gameId);
     });
   });
