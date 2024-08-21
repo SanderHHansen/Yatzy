@@ -36,19 +36,13 @@ function handleSockets(server) {
       console.log("A user disconnected");
     });
 
-    // TODO: Should be combining this and "joinGame" somehow.
-    socket.on("createNewGame", (hostName) => {
-      console.log("Creating new game. Host: " + hostName);
-      const gameId = createGame(hostName);
-
+    const handleJoinGame = (socket, gameId) => {
+      console.log("Handling join-game code!");
       // Adds user to Room.
       socket.join(gameId);
       console.log("User joined socket called: " + gameId);
 
-      // Sending gameData update.
-      sendGameData(gameId);
-
-      // Setting socket values
+      // Setts socket values
       socket.gameData = getGameByID(gameId);
       socket.gameId = gameId;
       socket.playerId = socket.gameData.host.playerId;
@@ -58,6 +52,13 @@ function handleSockets(server) {
 
       // Redirecting user to game site.
       socket.emit("redirect", "/game");
+    };
+
+    // TODO: Should be combining this and "joinGame" somehow.
+    socket.on("createNewGame", (hostName) => {
+      console.log("Creating new game. Host: " + hostName);
+      const gameId = createGame(hostName);
+      handleJoinGame(socket, gameId);
     });
 
     socket.on("rollDice", () => {
