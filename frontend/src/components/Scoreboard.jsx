@@ -29,7 +29,7 @@ function ScoreRow({ section, game, setScoreToSection, currentPlayerId }) {
       <td className="col1">{section.name}</td>
       {game.playerArray.map((player, index) => {
         const score = player.scoreboard[section.key];
-        return score ? (
+        return score !== null ? (
           <td key={index} className="scoreData">
             {score}
           </td>

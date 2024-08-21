@@ -20,7 +20,6 @@ function getAllGames() {
 
 /* Creates game based on hosts preferred nickname.
  * Returns gameId*/
-
 function createGame(hostName) {
   const host = new Player(hostName);
   const game = new Yatzy(host);
@@ -28,4 +27,16 @@ function createGame(hostName) {
   return game.gameId;
 }
 
-module.exports = { addGameToAllGames, getAllGames, getGameByID, createGame };
+// Adds player to given game, with given name.
+function addPlayerToGame(playerName, gameId) {
+  const game = getGameById(gameId);
+  game.addPlayerToGame(playerName);
+}
+
+module.exports = {
+  addGameToAllGames,
+  getAllGames,
+  getGameByID,
+  createGame,
+  addPlayerToGame,
+};

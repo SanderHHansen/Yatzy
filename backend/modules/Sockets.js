@@ -1,5 +1,9 @@
 const { Server } = require("socket.io");
-const { getGameByID, createGame } = require("./GameManager.js");
+const {
+  getGameByID,
+  createGame,
+  addPlayerToGame,
+} = require("./GameManager.js");
 
 let io; // Oppretter en referanse for 'io' som vil bli satt senere
 
@@ -14,24 +18,6 @@ function handleSockets(server) {
   io.on("connection", (socket) => {
     console.log("A user connected");
 
-    // Todo This code is not working properly.
-    socket.on("joinGame", (gameId) => {
-      console.log("joinGame code is running!");
-      socket.join(gameId); // Client joins game based on gameId
-      socket.gameId = gameId;
-      console.log("User joined socket called: " + gameId);
-      const gameData = getGameByID(gameId);
-      sendGameData(gameId);
-
-      /* Saves gameData to Socket */
-      if (gameData) {
-        socket.gameData = gameData;
-        console.log("Game data was set: ", gameData);
-      } else {
-        console.error("Game data was not found for gameId: " + gameId);
-      }
-    });
-
     socket.on("disconnect", () => {
       console.log("A user disconnected");
     });
@@ -42,10 +28,13 @@ function handleSockets(server) {
       socket.join(gameId);
       console.log("User joined socket called: " + gameId);
 
+      // Sending gameData
+      sendGameData(gameId);
+
       // Setts socket values
       socket.gameData = getGameByID(gameId);
       socket.gameId = gameId;
-      socket.playerId = socket.gameData.host.playerId;
+      socket.playerId = socket.gameData.playerArray.at(-1).playerId;
       socket.player = socket.gameData.getPlayerByPlayerId(socket.playerId);
 
       socket.emit("playerId", socket.playerId);
@@ -54,7 +43,15 @@ function handleSockets(server) {
       socket.emit("redirect", "/game");
     };
 
-    // TODO: Should be combining this and "joinGame" somehow.
+    // TODO: Not finished yet.
+    socket.on("joinGame", (gameId, playerName) => {
+      const game = getGameById(gameId);
+      game.addPlayerToGame(playerName);
+      console.log("Dette bør ikke kjøres");
+      handleJoinGame(socket, gameId);
+    });
+
+    // Creates a new game. Host is "hostName".
     socket.on("createNewGame", (hostName) => {
       console.log("Creating new game. Host: " + hostName);
       const gameId = createGame(hostName);

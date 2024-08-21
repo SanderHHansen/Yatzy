@@ -191,6 +191,7 @@ td.col1 {
 
 table {
   width: 70%;
+  font-size: auto;
   height: auto;
   color: rgb(255, 255, 255);
   border-collapse: collapse;
@@ -229,6 +230,7 @@ td.names {
 
 .scoreData {
   text-align: center;
+  font-weight: bold;
 }
 
 .canSetScore {
