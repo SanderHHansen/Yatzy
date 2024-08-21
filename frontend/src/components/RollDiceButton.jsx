@@ -8,13 +8,8 @@ function RollDiceButton() {
   const { setScramble } = useScrambleContext();
 
   function handleClick() {
-    // Checks if game exists
-    if (!gameData) {
-      return;
-    }
-
-    // Checks if rollCount is maxed.
-    if (gameData.rollCount === 3) {
+    // Checks if game exists, or if currentPlayer has rolled 3 times already.
+    if (!gameData || gameData.rollCount === 3) {
       return;
     }
 

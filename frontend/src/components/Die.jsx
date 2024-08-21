@@ -8,47 +8,50 @@ function Die({ index, pos }) {
   const { gameData: game } = useGameDataContext();
   const { scramble } = useScrambleContext();
   const [dieValue, setDieValue] = useState(
-    game ? game.currentPlayer.diceArray[index].value : "",
+    game ? game.currentPlayer.diceArray[index].value : "Feil",
   );
 
-  const tempValueRef = useRef(dieValue);
+  // References to die.
   const dieRef = useRef(null);
+  const dieValueRef = useRef(dieValue);
 
   const isTop = pos === "top" && !game.currentPlayer.diceArray[index].isSaved;
 
+  // Updating dieValue every time updated game-data arrives.
   useEffect(() => {
     setDieValue(game ? game.currentPlayer.diceArray[index].value : "");
-    tempValueRef.current = game
-      ? game.currentPlayer.diceArray[index].value
-      : "";
+    dieValueRef.current = dieValue;
   }, [game]);
+
+  useEffect(() => {
+    dieValueRef.current = dieValue;
+  }, [dieValue]);
 
   // For listening to scramble-event
   useEffect(() => {
-    const handleScramble = () => {
-      if (!isTop) return;
+    // Checks if dice is in top section.
+    if (!isTop) return;
+    const element = dieRef.current;
 
-      const element = dieRef.current;
-      if (element) {
-        element.textContent = "X";
-        element.classList.remove("roll");
-        void element.offsetWidth; // Forces reflow of object
-        element.classList.add("roll");
+    // Block for visual scrambling of dice
+    if (element) {
+      element.classList.remove("roll");
+      void element.offsetWidth; // Forces reflow of object
+      element.classList.add("roll");
 
-        const scrambleInterval = setInterval(() => {
-          element.textContent = Math.floor(Math.random() * 6) + 1;
-        }, 100);
+      // Visually scrambles dice.
+      const scrambleInterval = setInterval(() => {
+        element.textContent = Math.floor(Math.random() * 6) + 1;
+      }, 100);
 
-        setTimeout(() => {
-          clearInterval(scrambleInterval);
-          element.textContent = dieValue;
-        }, 1100);
+      setTimeout(() => {
+        clearInterval(scrambleInterval);
+        // Sets value of die back to real value (dieValue);
+        element.textContent = dieValueRef.current;
+      }, 1100);
 
-        return () => clearInterval(scrambleInterval); // Cleanup on unmount
-      }
-    };
-
-    handleScramble();
+      return () => clearInterval(scrambleInterval); // Cleanup on unmount
+    }
   }, [scramble]);
 
   // Returns shown dice
