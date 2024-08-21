@@ -2,7 +2,7 @@ import "./Game.css";
 import { useGameDataContext } from "./GameData.jsx";
 import socket from "./SocketFrontend.jsx";
 
-const sections = [
+const upperSections = [
   { name: "Ones", key: "ones" },
   { name: "Twos", key: "twos" },
   { name: "Threes", key: "threes" },
@@ -74,7 +74,7 @@ function Scoreboard() {
           </tr>
         </thead>
         <tbody>
-          {sections.map((section) => (
+          {upperSections.map((section) => (
             <ScoreRow
               key={section.key}
               section={section}
@@ -109,7 +109,7 @@ function Scoreboard() {
             />
           ))}
           <tr className="specialCell">
-            <td className="col1">Sum:</td>
+            <td className="col1">Total sum:</td>
             {game.playerArray.map(({ scoreboard: { totalSum } }, index) => (
               <td key={index} className="scoreData">
                 {totalSum || "0"}

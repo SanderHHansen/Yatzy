@@ -51,7 +51,7 @@ class Scores {
     this.sixes = upper(6);
   }
 
-  /* Functions that returns the highest values that occurs at least "frequency" amount of times,
+  /* Functions that returns the highest value that occurs at least "frequency" amount of times,
    * multiplicated by "frequency" given.
    * Ignores "valueToIgnore". If no values should be ignore, call function with (x, null).
    */
@@ -101,20 +101,12 @@ class Scores {
   }
 
   calculateSmallStraight() {
-    if (this.values[0] === null) {
-      return 0;
-    }
-
     if (this.frequencyFinder(2, null) === 0 && this.sixes === 0) {
       this.smallStraight = 15;
     }
   }
 
   calculateLargeStraight() {
-    if (this.values[0] === null) {
-      return 0;
-    }
-
     if (this.frequencyFinder(2, null) === 0 && this.ones === 0) {
       this.largeStraight = 20;
     }
