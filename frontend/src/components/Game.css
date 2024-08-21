@@ -231,6 +231,11 @@ td.names {
   text-align: center;
 }
 
+.canSetScore {
+  color: green;
+  cursor: pointer;
+}
+
 /* Top of table */
 table thead {
   background-color: #6f6f6f;

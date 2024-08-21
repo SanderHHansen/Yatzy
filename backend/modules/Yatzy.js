@@ -110,7 +110,7 @@ class Yatzy {
       return;
     }
 
-    player.rollDice();
+    this.currentPlayer.rollDice();
     this.rollCount++;
     this.updateGameData();
   }
@@ -125,7 +125,7 @@ class Yatzy {
       return;
     }
 
-    player.diceArray[diceIndex].flipIsSaved();
+    this.currentPlayer.diceArray[diceIndex].flipIsSaved();
   }
 
   /* Sets score for a given player and given section.
@@ -156,7 +156,7 @@ class Yatzy {
     });
 
     // Updates scoresPossible
-    this.scoresPossible = getScores();
+    this.scoresPossible = this.getScores();
   }
 }
 

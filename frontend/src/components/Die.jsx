@@ -49,7 +49,7 @@ function Die({ index, pos }) {
         clearInterval(scrambleInterval);
         // Sets value of die back to real value (dieValue);
         element.textContent = dieValueRef.current;
-      }, 1100);
+      }, 1300);
 
       return () => clearInterval(scrambleInterval); // Cleanup on unmount
     }

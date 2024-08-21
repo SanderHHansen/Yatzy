@@ -27,62 +27,134 @@ function Scoreboard() {
           <tr>
             <td className="col1"> Ones </td>
             {game &&
-              game.playerArray.map(({ scoreboard: { ones } }, index) =>
-                ones ? (
+              game.playerArray.map((player, index) => {
+                const {
+                  scoreboard: { ones },
+                } = player;
+                return ones ? (
                   <td key={index} className="scoreData">
                     {ones || ""}
+                  </td>
+                ) : game.currentPlayer.playerId === player.playerId ? (
+                  <td key={index} className="scoreData canSetScore">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {game.scoresPossible.ones}
+                    &nbsp;&nbsp; &lArr;
                   </td>
                 ) : (
-                  <td key={index} className="scoreData">
-                    {ones || ""}
-                  </td>
-                ),
-              )}
+                  <td key={index} className="scoreData"></td>
+                );
+              })}
           </tr>
           <tr>
             <td className="col1"> Twos </td>
             {game &&
-              game.playerArray.map(({ scoreboard: { twos } }, index) => (
-                <td key={index} className="scoreData">
-                  {twos || ""}
-                </td>
-              ))}
+              game.playerArray.map((player, index) => {
+                const {
+                  scoreboard: { twos },
+                } = player;
+                return twos ? (
+                  <td key={index} className="scoreData">
+                    {twos || ""}
+                  </td>
+                ) : game.currentPlayer.playerId === player.playerId ? (
+                  <td key={index} className="scoreData canSetScore">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {game.scoresPossible.twos}
+                    &nbsp;&nbsp; &lArr;
+                  </td>
+                ) : (
+                  <td key={index} className="scoreData"></td>
+                );
+              })}
           </tr>
           <tr>
             <td className="col1"> Threes </td>
             {game &&
-              game.playerArray.map(({ scoreboard: { threes } }, index) => (
-                <td key={index} className="scoreData">
-                  {threes || ""}
-                </td>
-              ))}
+              game.playerArray.map((player, index) => {
+                const {
+                  scoreboard: { twos },
+                } = player;
+                return twos ? (
+                  <td key={index} className="scoreData">
+                    {twos || ""}
+                  </td>
+                ) : game.currentPlayer.playerId === player.playerId ? (
+                  <td key={index} className="scoreData canSetScore">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {game.scoresPossible.threes}
+                    &nbsp;&nbsp; &lArr;
+                  </td>
+                ) : (
+                  <td key={index} className="scoreData"></td>
+                );
+              })}
           </tr>
           <tr>
             <td className="col1"> Fours </td>
             {game &&
-              game.playerArray.map(({ scoreboard: { fours } }, index) => (
-                <td key={index} className="scoreData">
-                  {fours || ""}
-                </td>
-              ))}
+              game.playerArray.map((player, index) => {
+                const {
+                  scoreboard: { fours },
+                } = player;
+                return fours ? (
+                  <td key={index} className="scoreData">
+                    {fours || ""}
+                  </td>
+                ) : game.currentPlayer.playerId === player.playerId ? (
+                  <td key={index} className="scoreData canSetScore">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {game.scoresPossible.fours}
+                    &nbsp;&nbsp; &lArr;
+                  </td>
+                ) : (
+                  <td key={index} className="scoreData"></td>
+                );
+              })}
           </tr>
           <tr>
             <td className="col1"> Fives </td>
             {game &&
-              game.playerArray.map(({ scoreboard: { fives } }, index) => (
-                <td key={index} className="scoreData">
-                  {fives || ""}
-                </td>
-              ))}
+              game.playerArray.map((player, index) => {
+                const {
+                  scoreboard: { fives },
+                } = player;
+                return fives ? (
+                  <td key={index} className="scoreData">
+                    {fives || ""}
+                  </td>
+                ) : game.currentPlayer.playerId === player.playerId ? (
+                  <td key={index} className="scoreData canSetScore">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {game.scoresPossible.fives}
+                    &nbsp;&nbsp; &lArr;
+                  </td>
+                ) : (
+                  <td key={index} className="scoreData"></td>
+                );
+              })}
           </tr>
           <tr>
             <td className="col1"> Sixes </td>
             {game &&
-              game.playerArray.map(({ scoreboard: { sixes } }, index) => (
-                <td key={index} className="scoreData">
-                  {sixes || ""}
-                </td>
-              ))}
+              game.playerArray.map((player, index) => {
+                const {
+                  scoreboard: { sixes },
+                } = player;
+                return sixes ? (
+                  <td key={index} className="scoreData">
+                    {sixes || ""}
+                  </td>
+                ) : game.currentPlayer.playerId === player.playerId ? (
+                  <td key={index} className="scoreData canSetScore">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {game.scoresPossible.sixes}
+                    &nbsp;&nbsp; &lArr;
+                  </td>
+                ) : (
+                  <td key={index} className="scoreData"></td>
+                );
+              })}
           </tr>
           <tr className="specialCell">
             <td className="col1"> Sum (Upper): </td>
@@ -105,99 +177,207 @@ function Scoreboard() {
           <tr>
             <td className="col1"> One pair </td>
             {game &&
-              game.playerArray.map(({ scoreboard: { onePair } }, index) => (
-                <td key={index} className="scoreData">
-                  {onePair || ""}
-                </td>
-              ))}
+              game.playerArray.map((player, index) => {
+                const {
+                  scoreboard: { onePair },
+                } = player;
+                return onePair ? (
+                  <td key={index} className="scoreData">
+                    {onePair || ""}
+                  </td>
+                ) : game.currentPlayer.playerId === player.playerId ? (
+                  <td key={index} className="scoreData canSetScore">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {game.scoresPossible.onePair}
+                    &nbsp;&nbsp; &lArr;
+                  </td>
+                ) : (
+                  <td key={index} className="scoreData"></td>
+                );
+              })}
           </tr>
           <tr>
             <td className="col1"> Two pairs </td>
             {game &&
-              game.playerArray.map(({ scoreboard: { twoPair } }, index) => (
-                <td key={index} className="scoreData">
-                  {twoPair || ""}
-                </td>
-              ))}
+              game.playerArray.map((player, index) => {
+                const {
+                  scoreboard: { twoPairs },
+                } = player;
+                return twoPairs ? (
+                  <td key={index} className="scoreData">
+                    {twoPairs || ""}
+                  </td>
+                ) : game.currentPlayer.playerId === player.playerId ? (
+                  <td key={index} className="scoreData canSetScore">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {game.scoresPossible.twoPairs}
+                    &nbsp;&nbsp; &lArr;
+                  </td>
+                ) : (
+                  <td key={index} className="scoreData"></td>
+                );
+              })}
           </tr>
           <tr>
             <td className="col1"> Three of a kind </td>
             {game &&
-              game.playerArray.map(
-                ({ scoreboard: { threeOfAKind } }, index) => (
+              game.playerArray.map((player, index) => {
+                const {
+                  scoreboard: { threeOfAKind },
+                } = player;
+                return threeOfAKind ? (
                   <td key={index} className="scoreData">
                     {threeOfAKind || ""}
                   </td>
-                ),
-              )}
+                ) : game.currentPlayer.playerId === player.playerId ? (
+                  <td key={index} className="scoreData canSetScore">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {game.scoresPossible.threeOfAKind}
+                    &nbsp;&nbsp; &lArr;
+                  </td>
+                ) : (
+                  <td key={index} className="scoreData"></td>
+                );
+              })}
           </tr>
           <tr>
             <td className="col1"> Four of a kind </td>
             {game &&
-              game.playerArray.map(({ scoreboard: { fourOfAKind } }, index) => (
-                <td key={index} className="scoreData">
-                  {fourOfAKind || ""}
-                </td>
-              ))}
+              game.playerArray.map((player, index) => {
+                const {
+                  scoreboard: { fourOfAKind },
+                } = player;
+                return fourOfAKind ? (
+                  <td key={index} className="scoreData">
+                    {fourOfAKind || ""}
+                  </td>
+                ) : game.currentPlayer.playerId === player.playerId ? (
+                  <td key={index} className="scoreData canSetScore">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {game.scoresPossible.fourOfAKind}
+                    &nbsp;&nbsp; &lArr;
+                  </td>
+                ) : (
+                  <td key={index} className="scoreData"></td>
+                );
+              })}
           </tr>
           <tr>
             <td className="col1"> Small straight </td>
             {game &&
-              game.playerArray.map(
-                ({ scoreboard: { smallStraight } }, index) => (
+              game.playerArray.map((player, index) => {
+                const {
+                  scoreboard: { smallStraight },
+                } = player;
+                return smallStraight ? (
                   <td key={index} className="scoreData">
                     {smallStraight || ""}
                   </td>
-                ),
-              )}
+                ) : game.currentPlayer.playerId === player.playerId ? (
+                  <td key={index} className="scoreData canSetScore">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {game.scoresPossible.smallStraight}
+                    &nbsp;&nbsp; &lArr;
+                  </td>
+                ) : (
+                  <td key={index} className="scoreData"></td>
+                );
+              })}
           </tr>
           <tr>
             <td className="col1"> Large straight </td>
             {game &&
-              game.playerArray.map(
-                ({ scoreboard: { largeStraight } }, index) => (
+              game.playerArray.map((player, index) => {
+                const {
+                  scoreboard: { largeStraight },
+                } = player;
+                return largeStraight ? (
                   <td key={index} className="scoreData">
                     {largeStraight || ""}
                   </td>
-                ),
-              )}
+                ) : game.currentPlayer.playerId === player.playerId ? (
+                  <td key={index} className="scoreData canSetScore">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {game.scoresPossible.largeStraight}
+                    &nbsp;&nbsp; &lArr;
+                  </td>
+                ) : (
+                  <td key={index} className="scoreData"></td>
+                );
+              })}
           </tr>
           <tr>
             <td className="col1"> Full house </td>
             {game &&
-              game.playerArray.map(({ scoreboard: { fullHouse } }, index) => (
-                <td key={index} className="scoreData">
-                  {fullHouse || ""}
-                </td>
-              ))}
+              game.playerArray.map((player, index) => {
+                const {
+                  scoreboard: { fullHouse },
+                } = player;
+                return fullHouse ? (
+                  <td key={index} className="scoreData">
+                    {fullHouse || ""}
+                  </td>
+                ) : game.currentPlayer.playerId === player.playerId ? (
+                  <td key={index} className="scoreData canSetScore">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {game.scoresPossible.fullHouse}
+                    &nbsp;&nbsp; &lArr;
+                  </td>
+                ) : (
+                  <td key={index} className="scoreData"></td>
+                );
+              })}
           </tr>
           <tr>
             <td className="col1"> Chance </td>
             {game &&
-              game.playerArray.map(({ scoreboard: { chance } }, index) => (
-                <td key={index} className="scoreData">
-                  {chance || ""}
-                </td>
-              ))}
+              game.playerArray.map((player, index) => {
+                const {
+                  scoreboard: { chance },
+                } = player;
+                return chance ? (
+                  <td key={index} className="scoreData">
+                    {chance || ""}
+                  </td>
+                ) : game.currentPlayer.playerId === player.playerId ? (
+                  <td key={index} className="scoreData canSetScore">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {game.scoresPossible.chance}
+                    &nbsp;&nbsp; &lArr;
+                  </td>
+                ) : (
+                  <td key={index} className="scoreData"></td>
+                );
+              })}
           </tr>
           <tr>
             <td className="col1"> Yatzy </td>
             {game &&
-              game.playerArray.map(({ scoreboard: { yatzy } }, index) => (
-                <td
-                  key={index}
-                  className={`scoreData ${yatzy ? "rainbow" : ""}`}
-                >
-                  {yatzy || ""}
-                </td>
-              ))}
+              game.playerArray.map((player, index) => {
+                const {
+                  scoreboard: { yatzy },
+                } = player;
+                return yatzy ? (
+                  <td key={index} className="scoreData">
+                    {yatzy || ""}
+                  </td>
+                ) : game.currentPlayer.playerId === player.playerId ? (
+                  <td key={index} className="scoreData canSetScore">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {game.scoresPossible.yatzy}
+                    &nbsp;&nbsp; &lArr;
+                  </td>
+                ) : (
+                  <td key={index} className="scoreData"></td>
+                );
+              })}
           </tr>
           <tr className="specialCell">
             <td className="col1"> Sum: </td>
             {game &&
               game.playerArray.map(({ scoreboard: { totalSum } }, index) => (
                 <td key={index} className="scoreData">
-                  {totalSum || ""}
+                  {totalSum || "0"}
                 </td>
               ))}
           </tr>
