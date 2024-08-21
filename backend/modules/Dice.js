@@ -1,21 +1,21 @@
 class Dice {
-    constructor() {
-        this.value = null;
-        this.isSaved = false;
-    }
+  constructor() {
+    this.value = null;
+    this.isSaved = false;
+  }
 
-    flipIsSaved() {
-        this.isSaved = !this.isSaved;
-    }
+  flipIsSaved() {
+    this.isSaved = !this.isSaved;
+  }
 
-    roll() {
-        this.value = Math.floor((Math.random()*6)+1);
-    }
+  roll() {
+    this.value = Math.floor(Math.random() * 6 + 1);
+  }
 
-    resetDice() {
-        this.value = null;
-        this.isSaved = false;
-    }
+  resetDice() {
+    this.value = 0;
+    this.isSaved = false;
+  }
 }
 
 module.exports = Dice;

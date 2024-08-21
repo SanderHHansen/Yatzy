@@ -74,6 +74,13 @@ function handleSockets(server) {
       // console.log("Updated dieValue for player: " + socket.playerId);
       sendGameData(socket.gameId);
     });
+
+    // Sets score for current player for scoreToBeSelected.
+    socket.on("selectingScore", (sectionToBeScored) => {
+      console.log("Setting score for section: " + sectionToBeScored);
+      socket.gameData.selectScore(socket.player, sectionToBeScored);
+      sendGameData(socket.gameId);
+    });
   });
 }
 
