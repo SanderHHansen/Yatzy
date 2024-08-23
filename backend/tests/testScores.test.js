@@ -13,7 +13,7 @@ for (let i = 0; i < 5; i++) {
 const shouldValuesBeRigged = true; // If specific values are needed, overwrite this.
 
 if (shouldValuesBeRigged) {
-  const specificValues = [6, 5, 4, 3, 2];
+  const specificValues = [1, 1, 1, 1, 4];
   for (let i = 0; i < 5; i++) {
     diceArray1[i].value = specificValues[i];
   }
@@ -24,6 +24,6 @@ const testScore = new Scores(diceArray1);
 
 // For logging purposes
 test("Checks if Scores exist", () => {
-  // console.log(testScore);
-  // console.log(testScore.returnScoresPossible());
+  console.log(testScore);
+  console.log(testScore.returnScoresPossible());
 });

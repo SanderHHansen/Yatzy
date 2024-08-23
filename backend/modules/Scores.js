@@ -56,7 +56,7 @@ class Scores {
    * Ignores "valueToIgnore". If no values should be ignore, call function with (x, null).
    */
   frequencyFinder(frequency, valueToIgnore) {
-    for (let i = 6; i > 1; i--) {
+    for (let i = 6; i > 0; i--) {
       // Checks if iteration should be skipped.
       if (valueToIgnore != null && valueToIgnore === i) {
         continue;
