@@ -3,6 +3,7 @@ const {
   getGameByID,
   createGame,
   addPlayerToGame,
+  removeGameFromAllGames,
 } = require("./GameManager.js");
 
 let io; // Oppretter en referanse for 'io' som vil bli satt senere
@@ -20,10 +21,37 @@ function handleSockets(server) {
 
     socket.on("disconnect", () => {
       console.log("A user disconnected");
+
+      // Delets gameId when all players leave that socket/room.
+      if (socket.gameId) {
+        const gameId = socket.gameId;
+        checkAndRemoveGameIfEmpty(gameId);
+      }
+
+      // Tenker å ha kode her som skriver ut "MELDING A" når alle forlater socketen som de ble med i med "socket.join(gameID)"."
     });
 
+    const checkAndRemoveGameIfEmpty = (gameId) => {
+      if (gameId) {
+        const numUsers = io.sockets.adapter.rooms.get(gameId)?.size || 0;
+        if (numUsers === 0) {
+          console.log("Removing game with ID: " + gameId + " from allGames.");
+          removeGameFromAllGames(gameId);
+        }
+      }
+    };
+
     const handleJoinGame = (socket, gameId) => {
-      console.log("Handling join-game code!");
+      // Leaves all previous rooms
+      for (const room of socket.rooms) {
+        if (room !== socket.id) {
+          // socket.id represents the individual socket room
+          const gameId = socket.gameId;
+          socket.leave(room);
+          checkAndRemoveGameIfEmpty(gameId);
+        }
+      }
+
       // Adds user to Room.
       socket.join(gameId);
       console.log("User joined socket called: " + gameId);

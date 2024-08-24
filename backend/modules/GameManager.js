@@ -3,7 +3,7 @@
 const Yatzy = require("./Yatzy.js");
 const Player = require("./Player.js");
 
-const allGames = [];
+let allGames = [];
 
 function addGameToAllGames(game) {
   allGames.push(game);
@@ -33,10 +33,20 @@ function addPlayerToGame(playerName, gameId) {
   game.addPlayerToGame(playerName);
 }
 
+// Removes game from allGames
+function removeGameFromAllGames(gameId) {
+  const game = getGameByID(gameId);
+
+  if (game) {
+    allGames = allGames.filter((element) => element.gameId !== gameId);
+  }
+}
+
 module.exports = {
   addGameToAllGames,
   getAllGames,
   getGameByID,
   createGame,
   addPlayerToGame,
+  removeGameFromAllGames,
 };
