@@ -149,6 +149,23 @@ class Yatzy {
     }
   }
 
+  /* Returns if game is still on round 1.
+   *  Returns "true" as long as one player exists who hasn't finished round 1.
+   */
+  isGameStillOnRoundOne() {
+    // Returns true if playerArray is empty.
+    if (this.playerArray.length === 0) {
+      return true;
+    }
+
+    this.playerArray.forEach((player) => {
+      if (player.roundsPlayed === 0) {
+        return true;
+      }
+    });
+    return false;
+  }
+
   // Updates all scoreboards for all players without changing anything.
   updateGameData() {
     this.playerArray.forEach((player) => {

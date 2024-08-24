@@ -46,8 +46,14 @@ function handleSockets(server) {
     // TODO: Not finished yet.
     socket.on("joinGame", (gameId, playerName) => {
       const game = getGameById(gameId);
-      game.addPlayerToGame(playerName);
-      console.log("Dette bør ikke kjøres");
+      // Checks if game is still on round 1.
+      if (isGameStillOnRoundOne()) {
+        game.addPlayerToGame(playerName);
+      } else {
+        console.log("Game has already started. Player can't join game.");
+      }
+
+      // Adds player to room so they can play or spectate.
       handleJoinGame(socket, gameId);
     });
 
