@@ -43,7 +43,6 @@ function handleSockets(server) {
       socket.emit("redirect", "/game");
     };
 
-    // TODO: Not finished yet.
     socket.on("joinGame", (gameId, playerName) => {
       const game = getGameById(gameId);
       // Checks if game is still on round 1.

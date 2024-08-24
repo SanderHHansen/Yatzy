@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import CopyRoomIdButton from "./CopyRoomIdButton.jsx";
 import "./Navbar.css";
-import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   // For navigation home
@@ -8,6 +8,10 @@ export default function Navbar() {
   const navigateHome = () => {
     navigate("/");
   };
+
+  // For checking if user is on /game.
+  const location = useLocation();
+  const isGameSite = location.pathname === "/game";
 
   return (
     <nav className="navbar">
@@ -22,6 +26,9 @@ export default function Navbar() {
       </h1>
       <button>Leaderboard</button>
       <button>About</button>
+
+      {/* Shows CopyRoomIdButton if user is on /game */}
+      {isGameSite && <CopyRoomIdButton />}
     </nav>
   );
 }

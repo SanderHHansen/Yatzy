@@ -17,11 +17,11 @@ body,
 }
 
 .left-item {
-  flex: 0 0 40%;
+  flex: 0 0 50%;
 }
 
 .right-item {
-  flex: 0 0 60%;
+  flex: 0 0 50%;
   margin-left: 10px;
 }
 
@@ -179,6 +179,13 @@ body,
   gap: 10px;
   filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5));
 }
+
+/* ##################### */
+/* Code for roomIdButton */
+/* ##################### */
+
+/* .roomIdButton {
+} */
 
 /* ############################### */
 /* Code that styles the scoreboard */
