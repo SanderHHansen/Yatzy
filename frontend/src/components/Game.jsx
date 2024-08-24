@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useGameDataContext } from "./GameData.jsx";
 import Scoreboard from "./Scoreboard.jsx";
 import PlayArea from "./PlayArea.jsx";
-import CopyRoomIdButton from "./CopyRoomIdButton.jsx";
 import "./Game.css";
 
 function Game() {

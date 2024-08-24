@@ -1,4 +1,4 @@
-.buttons {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,11 +8,23 @@
   width: 100%;
 }
 
-.buttons button {
-  height: 20%;
-  width: 25%;
-  font-size: 2vw;
+.container button,
+.typeRoomIdBox {
+  /* height: 20%;
+  width: 25%; */
+  font: auto;
+  width: clamp(10vw, 25vw, 25vw);
+  height: clamp(10vh, 20vh, 30vh);
+  font-size: clamp(2.5vw, 2.5vw, 3.2vw);
   font-weight: 600;
   color: whitesmoke;
   filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+}
+
+.typeRoomIdBox {
+  font-family: inherit;
+  margin-right: 15px;
+  margin-bottom: 0px;
+  color: rgba(0, 229, 255, 0.7) smoke;
+  border: 1px solid transparent;
 }

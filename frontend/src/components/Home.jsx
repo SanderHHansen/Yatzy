@@ -13,6 +13,10 @@ function Home() {
     socket.emit("createNewGame", "Sander");
   }
 
+  function joinExistingGame() {
+    navigate("/joinGame");
+  }
+
   // Rerouting to game-page:
   useEffect(() => {
     const handleRedirect = (path) => {
@@ -29,9 +33,9 @@ function Home() {
 
   return (
     <>
-      <div className="buttons">
+      <div className="container">
         <button onClick={createNewGame}> Create game </button>
-        <button> Join game </button>
+        <button onClick={joinExistingGame}> Join existing game </button>
       </div>
     </>
   );
