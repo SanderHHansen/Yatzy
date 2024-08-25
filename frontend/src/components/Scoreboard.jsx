@@ -30,7 +30,14 @@ function ScoreRow({ section, game, setScoreToSection, currentPlayerId }) {
       {game.playerArray.map((player, index) => {
         const score = player.scoreboard[section.key];
         return score !== null ? (
-          <td key={index} className="scoreData">
+          <td
+            key={index}
+            className={
+              section.key === "yatzy" && player.scoreboard.yatzy === 50
+                ? "scoreData rainbow"
+                : "scoreData"
+            }
+          >
             {score}
           </td>
         ) : currentPlayerId === player.playerId && game.rollCount !== 0 ? (

@@ -213,6 +213,7 @@ td.names {
 }
 
 .names {
+  font-size: x-large;
   width: auto;
   color: gold;
   padding-left: 10px;
