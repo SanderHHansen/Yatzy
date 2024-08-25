@@ -180,43 +180,6 @@ body,
   filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5));
 }
 
-/* ######################### */
-/* Code JoinExistingGame.jsx */
-/* ######################### */
-
-.joinGameContainer {
-  display: flex;
-  align-items: center;
-  justify-content: top;
-  flex-direction: column;
-  margin-top: 10%;
-  height: 100%;
-  width: 100%;
-}
-
-.joinGameContainer button,
-.typeRoomIdBox {
-  width: clamp(2vw, 40vw, 60vw);
-  height: 20%;
-  margin-bottom: 5%;
-  border-radius: 10px;
-  padding-right: 0;
-}
-
-.typeRoomIdBox {
-  text-align: center;
-  font-size: 4vw;
-  background-color: #1a1a1a;
-  cursor: text;
-}
-.typeRoomIdBox:hover {
-  border-color: #646cff;
-}
-.typeRoomIdBox:focus,
-.typeRoomIdBox:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
 /* ############################### */
 /* Code that styles the scoreboard */
 /* ############################### */

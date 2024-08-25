@@ -8,10 +8,7 @@
   width: 100%;
 }
 
-.container button,
-.typeRoomIdBox {
-  /* height: 20%;
-  width: 25%; */
+.container button {
   font: auto;
   width: clamp(10vw, 25vw, 25vw);
   height: clamp(10vh, 20vh, 30vh);
@@ -21,10 +18,39 @@
   filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
 }
 
-.typeRoomIdBox {
+/* ######################### */
+/* Code JoinExistingGame.jsx */
+/* ######################### */
+
+.topText {
   font-family: inherit;
-  margin-right: 15px;
+  font-size: clamp(2.5vw, 2.5vw, 3.2vw);
+  font-weight: 600;
   margin-bottom: 0px;
-  color: rgba(0, 229, 255, 0.7) smoke;
-  border: 1px solid transparent;
+}
+
+.inputTextField {
+  /* width: clamp(2vw, 40vw, 60vw); */
+  width: clamp(0.5vw, 30vw, 60vw);
+  height: 20%;
+  margin-bottom: 5%;
+  border-radius: 10px;
+  padding-right: 0;
+
+  text-align: center;
+  font-size: clamp(2.5vw, 3.5vw, 3.2vw);
+  /* font-size: 4vw; */
+
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+  cursor: text;
+  background-color: #1a1a1a;
+  border: 1px solid #58b9fa00;
+}
+
+.inputTextField:hover {
+  border: 1px solid #646cff;
+}
+.inputTextField:focus,
+.inputTextField:focus-visible {
+  outline: 0px auto -webkit-focus-ring-color;
 }

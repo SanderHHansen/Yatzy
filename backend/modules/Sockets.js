@@ -35,7 +35,6 @@ function handleSockets(server) {
         // Removes player from gameData.
         game = getGameByID(gameId);
         game.removePlayerFromGame(playerId);
-        console.log("Test removing player");
 
         const numUsers = io.sockets.adapter.rooms.get(gameId)?.size || 0;
         if (numUsers === 0) {

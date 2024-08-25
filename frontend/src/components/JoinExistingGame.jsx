@@ -14,7 +14,7 @@ function JoinExistingGame() {
 
   // For automatic selection of type room-ID
   useEffect(() => {
-    const inputField = document.querySelector(".typeRoomIdBox");
+    const inputField = document.querySelector(".inputTextField");
     if (inputField) {
       inputField.focus();
     }
@@ -30,7 +30,7 @@ function JoinExistingGame() {
         value={text}
         onChange={handleChange}
         onClick={clearText}
-        className="typeRoomIdBox"
+        className="inputTextField"
       />
     </div>
   );
