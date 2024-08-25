@@ -41,6 +41,9 @@ function handleSockets(server) {
           console.log("Removing game with ID: " + gameId + " from allGames.");
           removeGameFromAllGames(gameId);
         }
+
+        // Updating game data
+        sendGameData(gameId);
       }
     };
 
