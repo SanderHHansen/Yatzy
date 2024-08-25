@@ -1,6 +1,6 @@
 class Dice {
   constructor() {
-    this.value = null;
+    this.value = 0;
     this.isSaved = false;
   }
 

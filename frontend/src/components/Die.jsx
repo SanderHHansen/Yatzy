@@ -34,6 +34,8 @@ function Die({ index, pos }) {
     if (!isTop) return;
     const element = dieRef.current;
 
+    // TODO Should be adding fix to animation playing when dice are loaded.
+
     // Block for visual scrambling of dice
     if (element) {
       element.classList.remove("roll");
