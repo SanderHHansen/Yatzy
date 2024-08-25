@@ -25,14 +25,18 @@ function handleSockets(server) {
       // Delets gameId when all players leave that socket/room.
       if (socket.gameId) {
         const gameId = socket.gameId;
-        checkAndRemoveGameIfEmpty(gameId);
+        const playerId = socket.playerId;
+        checkAndRemoveGameIfEmpty(gameId, playerId);
       }
-
-      // Tenker å ha kode her som skriver ut "MELDING A" når alle forlater socketen som de ble med i med "socket.join(gameID)"."
     });
 
-    const checkAndRemoveGameIfEmpty = (gameId) => {
+    const checkAndRemoveGameIfEmpty = (gameId, playerId) => {
       if (gameId) {
+        // Removes player from gameData.
+        game = getGameByID(gameId);
+        game.removePlayerFromGame(playerId);
+        console.log("Test removing player");
+
         const numUsers = io.sockets.adapter.rooms.get(gameId)?.size || 0;
         if (numUsers === 0) {
           console.log("Removing game with ID: " + gameId + " from allGames.");
@@ -47,8 +51,9 @@ function handleSockets(server) {
         if (room !== socket.id) {
           // socket.id represents the individual socket room
           const gameId = socket.gameId;
+          const playerId = socket.playerId;
           socket.leave(room);
-          checkAndRemoveGameIfEmpty(gameId);
+          checkAndRemoveGameIfEmpty(gameId, playerId);
         }
       }
 

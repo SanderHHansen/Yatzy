@@ -21,6 +21,18 @@ class Yatzy {
     this.playerArray.push(newPlayer);
   }
 
+  removePlayerFromGame(playerId) {
+    this.playerArray = this.playerArray.filter(
+      (player) => player.playerId !== playerId
+    );
+    console.log(
+      "Player with playerID: " + playerId + " removed from game (Yatzy)"
+    );
+
+    // Updates currentPlayer in case player removed was currentPlayer.
+    this.changeCurrentPlayer();
+  }
+
   /* Checks playercount of every player. Updates currentPlayer to the one that has the least rounds played,
    * and who is at the lowest index in players-array.
    */
