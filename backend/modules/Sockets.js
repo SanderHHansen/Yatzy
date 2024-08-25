@@ -76,16 +76,27 @@ function handleSockets(server) {
     };
 
     socket.on("joinGame", (gameId, playerName) => {
-      const game = getGameById(gameId);
+      const game = getGameByID(gameId);
+
+      // Returns message if game doesn't exist.
+      if (!game) {
+        console.log("Game doesn't exist with code: " + gameId);
+        socket.emit("GameDoesNotExist", "No game exists with code: " + gameId);
+        return;
+      }
+
+      // Updates real gameId-value so handleJoinGame works as intended.
+      const realGameId = game.gameId;
+
       // Checks if game is still on round 1.
-      if (isGameStillOnRoundOne()) {
-        game.addPlayerToGame(playerName);
+      if (game.isGameStillOnRoundOne()) {
+        addPlayerToGame(playerName, realGameId);
       } else {
         console.log("Game has already started. Player can't join game.");
       }
 
       // Adds player to room so they can play or spectate.
-      handleJoinGame(socket, gameId);
+      handleJoinGame(socket, realGameId);
     });
 
     // Creates a new game. Host is "hostName".

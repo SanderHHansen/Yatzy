@@ -22,6 +22,12 @@ class Yatzy {
   }
 
   removePlayerFromGame(playerId) {
+    // If playerId is null
+    if (!playerId) {
+      console.log("PlayerID didn't exist. No player removed from game.");
+      return;
+    }
+
     this.playerArray = this.playerArray.filter(
       (player) => player.playerId !== playerId
     );
@@ -170,11 +176,17 @@ class Yatzy {
       return true;
     }
 
-    this.playerArray.forEach((player) => {
+    const stillOnRoundOne = this.playerArray.some((player) => {
       if (player.roundsPlayed === 0) {
         return true;
       }
+      return false;
     });
+
+    if (stillOnRoundOne) {
+      return true;
+    }
+
     return false;
   }
 

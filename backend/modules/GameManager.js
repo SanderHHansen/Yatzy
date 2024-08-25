@@ -9,8 +9,18 @@ function addGameToAllGames(game) {
   allGames.push(game);
 }
 
-// Returns game that matches ID given.
+/* Returns game that matches ID given.
+ * Accepts full gameId, or the first 3
+ */
 function getGameByID(id) {
+  // Checks if length is 3 (Is the case when joining already existing game)
+  if (id.length === 3) {
+    return (
+      allGames.find((game) => game.gameId.slice(0, 3).toUpperCase() === id) ||
+      null
+    );
+  }
+
   return allGames.find((game) => game.gameId === id) || null;
 }
 
@@ -29,8 +39,11 @@ function createGame(hostName) {
 
 // Adds player to given game, with given name.
 function addPlayerToGame(playerName, gameId) {
-  const game = getGameById(gameId);
-  game.addPlayerToGame(playerName);
+  const game = getGameByID(gameId);
+  const newPlayer = new Player(playerName);
+  console.log("Adding this player to the game: ");
+  console.log(newPlayer);
+  game.addPlayerToGame(newPlayer);
 }
 
 // Removes game from allGames

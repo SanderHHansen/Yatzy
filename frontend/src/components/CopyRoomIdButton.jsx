@@ -3,6 +3,12 @@ import { useGameDataContext } from "./GameData.jsx";
 
 function CopyRoomIdButton() {
   const { gameData: game } = useGameDataContext();
+  let gameIdString = "null";
+
+  // Grabs first 3 letters of gameId
+  if (game) {
+    gameIdString = game.gameId.slice(0, 3).toUpperCase();
+  }
 
   function handleClick() {
     try {
@@ -12,8 +18,6 @@ function CopyRoomIdButton() {
     }
   }
 
-  // Grabs first 3 letters of gameId
-  const gameIdString = game.gameId.slice(0, 3).toUpperCase();
   return (
     <button className="roomIdButton" onClick={handleClick}>
       Copy Room-ID: {gameIdString}
