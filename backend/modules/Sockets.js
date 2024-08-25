@@ -109,13 +109,14 @@ function handleSockets(server) {
     socket.on("rollDice", () => {
       // console.log("Rolling dice for game:" + socket.gameId);
       const game = socket.gameData;
-      game.rollDice(socket.player);
+      if (game) {
+        game.rollDice(socket.player);
+        // Sends out call for scrambling animation to socket.
+        io.to(socket.gameId).emit("Scramble");
 
-      // Sends out call for scrambling animation to socket.
-      socket.emit("Scramble");
-
-      // Updates gameData.
-      sendGameData(socket.gameId);
+        // Updates gameData.
+        sendGameData(socket.gameId);
+      }
     });
 
     // Flips isSaved for a given die.
