@@ -191,11 +191,13 @@ td.col1 {
 
 table {
   width: 70%;
-  font-size: auto;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  font-size: 1.9vh;
   height: auto;
   color: rgb(255, 255, 255);
-  border-collapse: collapse;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: transparent;
   table-layout: auto;
   margin-left: auto;
   margin-right: auto;
@@ -218,15 +220,12 @@ td.names {
   color: gold;
   padding-left: 10px;
   padding-right: 10px;
-}
-
-.specialCell {
-  background-color: #000000;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 .specialCell td {
   /* Sum (upper), Bonus and total sum */
-  background-color: rgb(0, 63, 92);
+  background-color: rgb(35, 82, 103);
 }
 
 .scoreData {
@@ -240,18 +239,18 @@ td.names {
 }
 
 /* Top of table */
-table thead {
+/* table thead {
   background-color: #6f6f6f;
-}
+} */
 
 table th,
 table td {
-  border: 2.5px solid #000000;
+  /* border: 2.5px solid #000000; */
   padding: 3px;
   text-align: left;
 }
 
-table tr:nth-child(even) {
+table tr:nth-child(even):not(:last-child) {
   background-color: #3c3c3c;
 }
 
@@ -284,4 +283,58 @@ table tr:nth-child(even) {
   100% {
     color: #ff7676;
   }
+}
+
+/* Adding black bars between scores */
+th {
+  border-bottom: 4px solid rgb(0, 0, 0);
+}
+
+td:not(:last-child),
+th:not(:last-child) {
+  border-right: 4px solid rgb(23, 23, 23);
+}
+
+/* Fixing border radius for corners */
+table thead tr:first-child {
+  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.5);
+  border-bottom: 2.5px solid #000000;
+}
+
+/* Top row */
+th:first-child,
+th:last-child {
+  /* background-color: rgb(106, 106, 106); */
+  background: linear-gradient(
+    to bottom,
+    rgb(106, 106, 106),
+    rgb(120, 120, 120)
+  ); /* Gradient fra lys rød til mørk rød */
+}
+
+/* Upper left corner */
+th:first-child {
+  /* border-top-left-radius: 10px; */
+}
+
+/* Upper right corner */
+th:last-child {
+  border-top-right-radius: 15px;
+}
+
+/* Bottom row */
+
+table tr:last-child td:first-child,
+table tr:last-child td:last-child {
+  background-color: rgb(106, 106, 106);
+}
+
+/* Lower left corner */
+tr:last-child td:first-child {
+  border-bottom-left-radius: 15px;
+}
+
+/* Lower right corner */
+tr:last-child td:last-child {
+  /* border-bottom-right-radius: 10px; */
 }
