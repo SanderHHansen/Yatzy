@@ -110,6 +110,11 @@ function handleSockets(server) {
       // console.log("Rolling dice for game:" + socket.gameId);
       const game = socket.gameData;
       game.rollDice(socket.player);
+
+      // Sends out call for scrambling animation to socket.
+      socket.emit("Scramble");
+
+      // Updates gameData.
       sendGameData(socket.gameId);
     });
 

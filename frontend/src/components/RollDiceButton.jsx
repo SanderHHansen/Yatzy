@@ -5,7 +5,6 @@ import socket from "./SocketFrontend.jsx";
 
 function RollDiceButton() {
   const { playerId, gameData } = useGameDataContext();
-  const { setScramble } = useScrambleContext();
 
   function handleClick() {
     // Checks if game exists, or if currentPlayer has rolled 3 times already.
@@ -20,9 +19,6 @@ function RollDiceButton() {
 
     // Sends operation to backend.
     socket.emit("rollDice");
-
-    // Calls for scramble-animation to happen in frontend.
-    setScramble((prev) => prev + 1);
   }
 
   return (
