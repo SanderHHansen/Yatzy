@@ -28,7 +28,11 @@ changed until true updated value is shown.
 
 ## Creating game
 
-![image](https://github.com/user-attachments/assets/023c66dc-966a-461e-8dd2-2bb52f080ee3)
+![Creating Game GIF](https://github.com/user-attachments/assets/9c775804-f3a4-48b5-9fba-9d01e42468ed)
+
+## Joining game
+
+![Joining Game GIF](https://github.com/user-attachments/assets/bdcd9e3a-17fa-449a-b2cb-1cf569d60e51)
 
 ## Practical notes
 Users are met with a pleasant home-screen where games can easily be created. There is no upper limit on how many games the backend can handle at a time, but
