@@ -18,6 +18,8 @@ React.
 
 ## Roll animation in game
 Note: As this is a gif, animation looks choppy. Fluid motion in-game.
+Rolling "animation" is made in CSS, where the dice is being "rolled" by rotated while the show value of the dice is randomly 
+changed until true updated value is shown.
 
 ![gif](https://github.com/user-attachments/assets/5d9a0779-1dc6-44e8-84a4-96f23b8f8748)
 
@@ -33,7 +35,10 @@ Users are met with a pleasant home-screen where games can easily be created. The
 each user can only partake in one game at a time. Games are created upon request, and removed off backend when either (1): All players leave the game, or (2): A game finished.
 In the latter, results are sent to PostgreSQL-database, and a "Game-end" screen with the winner and all results are displayed.
 
-Lobbies can easily be shared and joined via a three letter code. Users are automatically joining socket when entering room, and automatically disconnected from socket when leaving.
+Lobbies can easily be shared and joined via a three letter code. While each game has a unique uuidv4-ID, lobby codes are assigned the first three letters for ease of use, while still connecting
+the user to the correct game in backend.
+
+Users are automatically joining socket when entering room, and automatically disconnected from socket when leaving.
 
 ## Playing a game:
 Only the active player is allowed to interact with game-elements during their turn. They have the option to roll dice (up to 3 times), saved desired dice, and set a score.
