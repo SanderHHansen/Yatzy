@@ -1,5 +1,6 @@
 ## General
 Yatzy is a dice game similar to Yacht and Yahtzee. It is related to the Latin American game Generala and the English game of poker dice. Yatzy is most popular in the Nordic countries.
+Note: Work in progress. All core functionality is working, but shown content is not final product.
 
 ## Notes on implementation
 This implementation was done completely from scratch using no precode of any kind.
@@ -9,7 +10,7 @@ Node.js and Express.js with Socket.IO-implementation for real-time updates for p
 Furthermore, PostgreSQL-database is used for keeping track of all finished games.
 
 **Frontend:**
-React. All practical 
+React.
 
 # Showcase
 ## Leaderboard
